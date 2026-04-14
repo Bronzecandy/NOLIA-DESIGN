@@ -2,8 +2,8 @@
 
 :root {
   --font-size: 16px;
-  --font-heading: 'Cormorant Garamond', serif;
-  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
 
   /* NOLIA HOI AN Color Palette */
   --color-moss: #526248;
@@ -192,5 +192,20 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
