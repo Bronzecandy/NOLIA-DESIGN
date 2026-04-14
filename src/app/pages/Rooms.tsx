@@ -38,20 +38,21 @@ export default function Rooms() {
                 <img
                   src={room.image}
                   alt={room.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out grayscale-[10%]"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out grayscale-[10%] group-hover:grayscale-0"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
               </div>
-              <h3 className="text-2xl mb-2" style={{ fontFamily: "var(--font-heading)" }}>{room.name}</h3>
+              <h3 className="text-2xl mb-2 group-hover:text-[#AF9666] transition-colors duration-300" style={{ fontFamily: "var(--font-heading)" }}>{room.name}</h3>
               <p className="text-sm opacity-80 mb-6 flex-grow" style={{ fontFamily: "var(--font-body)" }}>
                 {room.shortDesc}
               </p>
-              <div className="flex justify-between items-center border-t pt-4 mt-auto" style={{ borderColor: 'rgba(82, 98, 72, 0.2)' }}>
+              <div className="flex justify-between items-center border-t pt-4 mt-auto group-hover:border-[#AF9666] transition-colors duration-300" style={{ borderColor: 'rgba(82, 98, 72, 0.2)' }}>
                 <span className="text-xs opacity-70" style={{ fontFamily: "var(--font-body)" }}>{room.size}</span>
                 <span
-                  className="text-xs tracking-widest uppercase group-hover:opacity-70 transition-opacity"
+                  className="text-xs tracking-widest uppercase group-hover:tracking-[0.2em] transition-all duration-300"
                   style={{ fontFamily: "var(--font-body)", color: colors.bronze }}
                 >
-                  Chi tiết
+                  Chi tiết →
                 </span>
               </div>
             </div>

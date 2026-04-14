@@ -32,12 +32,14 @@ export function About() {
         </p>
 
         <div className="mt-16 flex justify-center">
-          <img
-            src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=2070&auto=format&fit=crop"
-            alt="Hoi An Architecture"
-            className="w-full max-w-2xl h-auto aspect-[4/3] object-cover grayscale-[20%] sepia-[10%]"
-            style={{ padding: '8px', border: `1px solid ${colors.bronze}` }}
-          />
+          <div className="overflow-hidden group">
+            <img
+              src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=2070&auto=format&fit=crop"
+              alt="Hoi An Architecture"
+              className="w-full max-w-2xl h-auto aspect-[4/3] object-cover grayscale-[20%] sepia-[10%] group-hover:grayscale-0 group-hover:sepia-0 group-hover:scale-[1.03] transition-all duration-700"
+              style={{ padding: '8px', border: `1px solid ${colors.bronze}` }}
+            />
+          </div>
         </div>
       </div>
     </section>

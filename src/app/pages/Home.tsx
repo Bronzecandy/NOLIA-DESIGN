@@ -30,10 +30,10 @@ function RoomsPreview() {
           </div>
           <Link
             to="/rooms"
-            className="flex items-center text-sm tracking-widest uppercase group hover:opacity-70 transition-opacity"
+            className="flex items-center text-sm tracking-widest uppercase group hover:text-[#AF9666] transition-colors duration-300"
             style={{ fontFamily: "var(--font-body)", color: colors.green }}
           >
-            Xem tất cả hạng phòng <ChevronRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            Xem tất cả hạng phòng <ChevronRight size={16} className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
           </Link>
         </div>
 
@@ -48,15 +48,15 @@ function RoomsPreview() {
                 <img
                   src={room.image}
                   alt={room.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out grayscale-[10%]"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out grayscale-[10%] group-hover:grayscale-0"
                 />
               </div>
-              <h3 className="text-2xl mb-2" style={{ fontFamily: "var(--font-heading)" }}>{room.name}</h3>
+              <h3 className="text-2xl mb-2 group-hover:text-[#AF9666] transition-colors duration-300" style={{ fontFamily: "var(--font-heading)" }}>{room.name}</h3>
               <p className="text-sm opacity-80 mb-4 line-clamp-2" style={{ fontFamily: "var(--font-body)" }}>
                 {room.shortDesc}
               </p>
               <span
-                className="text-xs tracking-widest uppercase border-b pb-1"
+                className="text-xs tracking-widest uppercase border-b pb-1 group-hover:border-[#526248] group-hover:text-[#526248] transition-colors duration-300"
                 style={{ fontFamily: "var(--font-body)", borderColor: colors.bronze, color: colors.bronze }}
               >
                 Khám phá
@@ -75,11 +75,11 @@ function WellnessSection() {
   return (
     <section id="experiences" className="py-24 md:py-36 px-6">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-1/2 overflow-hidden group">
           <img
             src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop"
             alt="Spa Experience"
-            className="w-full aspect-square object-cover"
+            className="w-full aspect-square object-cover group-hover:scale-[1.03] transition-transform duration-700"
             style={{ borderRadius: '100px 0 100px 0' }}
           />
         </div>
@@ -100,7 +100,7 @@ function WellnessSection() {
           </p>
           <button
             onClick={() => navigate("/booking")}
-            className="px-8 py-3 text-sm tracking-widest uppercase border hover:bg-opacity-10 transition-colors"
+            className="px-8 py-3 text-sm tracking-widest uppercase border transition-all duration-500 hover:bg-[#526248] hover:text-[#F4F2EB] hover:border-[#526248]"
             style={{ fontFamily: "var(--font-body)", borderColor: colors.green, color: colors.green }}
           >
             Đặt Dịch Vụ

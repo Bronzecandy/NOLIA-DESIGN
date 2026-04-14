@@ -49,7 +49,7 @@ export default function Booking() {
                 <input
                   type="date"
                   required
-                  className="w-full bg-transparent border-b py-2 focus:outline-none transition-colors"
+                  className="w-full bg-transparent border-b py-2 focus:outline-none transition-all duration-300 focus:border-[#526248]"
                   style={{ borderColor: colors.bronze, color: colors.green }}
                 />
               </div>
@@ -58,7 +58,7 @@ export default function Booking() {
                 <input
                   type="date"
                   required
-                  className="w-full bg-transparent border-b py-2 focus:outline-none transition-colors"
+                  className="w-full bg-transparent border-b py-2 focus:outline-none transition-all duration-300 focus:border-[#526248]"
                   style={{ borderColor: colors.bronze, color: colors.green }}
                 />
               </div>
@@ -68,7 +68,7 @@ export default function Booking() {
               <div>
                 <label className="text-[10px] uppercase tracking-widest opacity-70 mb-1 block" style={{ color: colors.green }}>Số lượng khách</label>
                 <select
-                  className="w-full bg-transparent border-b py-2 focus:outline-none appearance-none"
+                  className="w-full bg-transparent border-b py-2 focus:outline-none appearance-none transition-all duration-300 focus:border-[#526248] cursor-pointer"
                   style={{ borderColor: colors.bronze, color: colors.green }}
                 >
                   <option>1 Người lớn</option>
@@ -80,7 +80,7 @@ export default function Booking() {
               <div>
                 <label className="text-[10px] uppercase tracking-widest opacity-70 mb-1 block" style={{ color: colors.green }}>Hạng phòng</label>
                 <select
-                  className="w-full bg-transparent border-b py-2 focus:outline-none appearance-none"
+                  className="w-full bg-transparent border-b py-2 focus:outline-none appearance-none transition-all duration-300 focus:border-[#526248] cursor-pointer"
                   style={{ borderColor: colors.bronze, color: colors.green }}
                 >
                   {roomsData.map((room) => (
@@ -95,7 +95,7 @@ export default function Booking() {
                 type="text"
                 required
                 placeholder="Họ và Tên"
-                className="w-full bg-transparent border-b py-2 focus:outline-none placeholder-opacity-50"
+                className="w-full bg-transparent border-b py-2 focus:outline-none placeholder-opacity-50 transition-all duration-300 focus:border-[#526248]"
                 style={{ borderColor: colors.bronze, color: colors.green }}
               />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -103,29 +103,29 @@ export default function Booking() {
                   type="email"
                   required
                   placeholder="Email"
-                  className="w-full bg-transparent border-b py-2 focus:outline-none placeholder-opacity-50"
+                  className="w-full bg-transparent border-b py-2 focus:outline-none placeholder-opacity-50 transition-all duration-300 focus:border-[#526248]"
                   style={{ borderColor: colors.bronze, color: colors.green }}
                 />
                 <input
                   type="tel"
                   required
                   placeholder="Số điện thoại"
-                  className="w-full bg-transparent border-b py-2 focus:outline-none placeholder-opacity-50"
+                  className="w-full bg-transparent border-b py-2 focus:outline-none placeholder-opacity-50 transition-all duration-300 focus:border-[#526248]"
                   style={{ borderColor: colors.bronze, color: colors.green }}
                 />
               </div>
               <textarea
                 placeholder="Yêu cầu đặc biệt (Không bắt buộc)..."
                 rows={3}
-                className="w-full bg-transparent border-b py-2 focus:outline-none placeholder-opacity-50 resize-none"
+                className="w-full bg-transparent border-b py-2 focus:outline-none placeholder-opacity-50 resize-none transition-all duration-300 focus:border-[#526248]"
                 style={{ borderColor: colors.bronze, color: colors.green }}
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-4 text-sm tracking-widest uppercase transition-opacity hover:opacity-90 mt-8"
-              style={{ fontFamily: "var(--font-body)", backgroundColor: colors.green, color: colors.bg }}
+              className="w-full py-4 text-sm tracking-widest uppercase transition-all duration-500 bg-[#526248] text-[#F4F2EB] hover:bg-[#AF9666] mt-8"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Gửi Yêu Cầu Đặt Phòng
             </button>

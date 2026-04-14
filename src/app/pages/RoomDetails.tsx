@@ -26,10 +26,10 @@ export default function RoomDetails() {
       <div className="max-w-7xl mx-auto px-6">
         <button
           onClick={() => navigate("/rooms")}
-          className="flex items-center text-xs tracking-widest uppercase mb-8 hover:opacity-70 transition-opacity"
+          className="group flex items-center text-xs tracking-widest uppercase mb-8 hover:text-[#526248] transition-colors duration-300"
           style={{ fontFamily: "var(--font-body)", color: colors.bronze }}
         >
-          <MoveLeft size={16} className="mr-2" /> Trở lại danh sách
+          <MoveLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform duration-300" /> Trở lại danh sách
         </button>
 
         <div className="mb-12">
@@ -45,11 +45,11 @@ export default function RoomDetails() {
         </div>
       </div>
 
-      <div className="w-full aspect-[21/9] md:aspect-[21/7] overflow-hidden mb-16">
+      <div className="w-full aspect-[21/9] md:aspect-[21/7] overflow-hidden mb-16 group">
         <img
           src={room.image}
           alt={room.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-[2s] ease-out"
         />
       </div>
 
@@ -65,7 +65,7 @@ export default function RoomDetails() {
         </div>
 
         <div className="w-full md:w-1/3">
-          <div className="p-8 border" style={{ borderColor: 'rgba(175, 150, 102, 0.3)', backgroundColor: '#EDEAE0' }}>
+          <div className="p-8 border hover:shadow-lg transition-shadow duration-500" style={{ borderColor: 'rgba(175, 150, 102, 0.3)', backgroundColor: '#EDEAE0' }}>
             <h3
               className="text-xl mb-6 border-b pb-4"
               style={{ fontFamily: "var(--font-heading)", color: colors.green, borderColor: 'rgba(82, 98, 72, 0.2)' }}
@@ -93,8 +93,8 @@ export default function RoomDetails() {
 
             <button
               onClick={() => navigate("/booking")}
-              className="w-full py-4 text-sm tracking-widest uppercase transition-opacity hover:opacity-90"
-              style={{ fontFamily: "var(--font-body)", backgroundColor: colors.green, color: colors.bg }}
+              className="w-full py-4 text-sm tracking-widest uppercase transition-all duration-500 bg-[#526248] text-[#F4F2EB] hover:bg-[#AF9666]"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Đặt Phòng Ngay
             </button>

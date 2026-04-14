@@ -50,8 +50,7 @@ export function AiConcierge() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 z-50 p-4 rounded-full shadow-2xl transition-transform hover:scale-110 flex items-center justify-center animate-bounce"
-        style={{ backgroundColor: colors.bronze, color: colors.bg }}
+        className="fixed bottom-8 right-8 z-50 p-4 rounded-full shadow-2xl hover:scale-110 hover:shadow-[0_0_30px_rgba(175,150,102,0.4)] transition-all duration-300 flex items-center justify-center animate-bounce bg-[#AF9666] text-[#F4F2EB] hover:bg-[#526248]"
       >
         <Sparkles size={24} />
       </button>
@@ -64,7 +63,7 @@ export function AiConcierge() {
           >
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 opacity-60 hover:opacity-100 transition-opacity"
+              className="absolute top-4 right-4 opacity-60 hover:opacity-100 hover:rotate-90 transition-all duration-300"
               style={{ color: colors.green }}
             >
               <X size={24} />
@@ -85,7 +84,7 @@ export function AiConcierge() {
                   value={userMood}
                   onChange={(e) => setUserMood(e.target.value)}
                   placeholder="Ví dụ: Dạo này tôi khá áp lực với công việc, tôi muốn tìm một không gian thật yên tĩnh để đọc sách và ngủ một giấc thật sâu..."
-                  className="w-full h-32 p-4 border rounded-lg focus:outline-none text-sm resize-none"
+                  className="w-full h-32 p-4 border rounded-lg focus:outline-none text-sm resize-none transition-all duration-300 focus:border-[#526248] focus:shadow-[0_0_0_1px_rgba(82,98,72,0.3)]"
                   style={{
                     fontFamily: "var(--font-body)",
                     borderColor: colors.bronze,
@@ -122,8 +121,8 @@ export function AiConcierge() {
                 <button
                   onClick={generateExperience}
                   disabled={!userMood.trim()}
-                  className="w-full py-3 rounded text-sm tracking-widest uppercase transition-opacity disabled:opacity-50"
-                  style={{ fontFamily: "var(--font-body)", backgroundColor: colors.green, color: colors.bg }}
+                  className="w-full py-3 rounded text-sm tracking-widest uppercase transition-all duration-500 disabled:opacity-50 bg-[#526248] text-[#F4F2EB] hover:bg-[#AF9666] disabled:hover:bg-[#526248]"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   Nhận Gợi Ý Từ Nolia
                 </button>
@@ -133,7 +132,7 @@ export function AiConcierge() {
                     setRecommendation('');
                     setUserMood('');
                   }}
-                  className="w-full py-3 rounded text-sm tracking-widest uppercase border transition-colors hover:bg-opacity-10"
+                  className="w-full py-3 rounded text-sm tracking-widest uppercase border transition-all duration-500 hover:bg-[#526248] hover:text-[#F4F2EB] hover:border-[#526248]"
                   style={{ fontFamily: "var(--font-body)", borderColor: colors.green, color: colors.green }}
                 >
                   Thử Một Cảm Xúc Khác

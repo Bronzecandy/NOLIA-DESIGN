@@ -30,8 +30,8 @@ export default function NotFound() {
         </p>
         <Link
           to="/"
-          className="inline-block px-10 py-4 text-sm tracking-widest hover:opacity-80 transition-all duration-500"
-          style={{ fontFamily: "var(--font-body)", fontWeight: 500, backgroundColor: colors.green, color: '#F4F2EB' }}
+          className="inline-block px-10 py-4 text-sm tracking-widest transition-all duration-500 bg-[#526248] text-[#F4F2EB] hover:bg-[#AF9666]"
+          style={{ fontFamily: "var(--font-body)", fontWeight: 500 }}
         >
           VỀ TRANG CHỦ
         </Link>

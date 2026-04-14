@@ -66,7 +66,6 @@ export default function Experiences() {
 
   return (
     <main className="pt-36 pb-24 min-h-screen">
-      {/* Header */}
       <section className="px-6 md:px-12 mb-20">
         <div className="max-w-7xl mx-auto text-center">
           <span
@@ -88,7 +87,6 @@ export default function Experiences() {
         </div>
       </section>
 
-      {/* Experiences List */}
       <section className="px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-32">
           {experiences.map((exp, index) => {
@@ -100,12 +98,13 @@ export default function Experiences() {
                 className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-16`}
               >
                 <div className="w-full lg:w-1/2">
-                  <div className="overflow-hidden relative aspect-[3/4]">
+                  <div className="overflow-hidden relative aspect-[3/4] group">
                     <img
                       src={exp.image}
                       alt={exp.title}
-                      className="w-full h-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                     />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
                   </div>
                 </div>
 
@@ -137,7 +136,7 @@ export default function Experiences() {
                       {exp.details.map((detail, i) => (
                         <li
                           key={i}
-                          className="flex items-start gap-3 text-sm opacity-80"
+                          className="flex items-start gap-3 text-sm opacity-80 hover:opacity-100 hover:translate-x-1 transition-all duration-300"
                           style={{ fontFamily: "var(--font-body)", color: colors.green }}
                         >
                           <span style={{ color: colors.bronze }}>•</span>
@@ -149,8 +148,8 @@ export default function Experiences() {
 
                   <button
                     onClick={() => navigate("/booking")}
-                    className="px-8 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-80"
-                    style={{ fontFamily: "var(--font-body)", backgroundColor: colors.green, color: colors.bg }}
+                    className="px-8 py-3 text-sm tracking-widest uppercase transition-all duration-500 bg-[#526248] text-[#F4F2EB] hover:bg-[#AF9666]"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     Đặt Trải Nghiệm
                   </button>
@@ -161,7 +160,6 @@ export default function Experiences() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="mt-32 py-24 px-6 md:px-12" style={{ backgroundColor: colors.green }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: "var(--font-heading)", color: colors.bg }}>
@@ -175,7 +173,7 @@ export default function Experiences() {
           </p>
           <a
             href="mailto:hello@noliahoian.com"
-            className="inline-block px-10 py-4 border text-sm tracking-widest hover:bg-[#F4F2EB] hover:text-[#526248] transition-all duration-500"
+            className="inline-block px-10 py-4 border text-sm tracking-widest transition-all duration-500 hover:bg-[#F4F2EB] hover:text-[#526248] hover:border-[#F4F2EB]"
             style={{ fontFamily: "var(--font-body)", fontWeight: 500, borderColor: colors.bg, color: colors.bg }}
           >
             LIÊN HỆ CONCIERGE
