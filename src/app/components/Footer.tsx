@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router";
 import { MapPin, Phone, Mail, Instagram, Facebook, ChevronRight } from "lucide-react";
+import logoImage from "../../imports/image-Photoroom.png";
 
 const colors = {
   bg: '#F4F2EB',
@@ -19,14 +20,16 @@ export function Footer() {
     <footer className="pt-24 pb-12 px-6" style={{ backgroundColor: '#EDEAE0' }}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="md:col-span-1">
-          <h2
-            className="text-3xl tracking-[0.1em] mb-2 cursor-pointer hover:text-[#AF9666] transition-colors duration-300"
-            style={{ fontFamily: "var(--font-heading)", color: colors.green }}
-            onClick={() => handleNav("/")}
-          >
-            NOLIA
-          </h2>
-          <p className="text-xs tracking-[0.3em] uppercase mb-6" style={{ color: colors.bronze }}>Hoi An</p>
+          <div className="flex flex-col items-start mb-4 cursor-pointer group" onClick={() => handleNav("/")}>
+            <img src={logoImage} alt="Nolia Logo" className="h-10 w-auto group-hover:scale-105 transition-transform duration-300" />
+            <h2
+              className="text-2xl tracking-[0.15em] group-hover:text-[#AF9666] transition-colors duration-300 leading-none mt-2"
+              style={{ fontFamily: "var(--font-heading)", color: colors.green }}
+            >
+              NOLIA
+            </h2>
+            <p className="text-[9px] tracking-[0.3em] uppercase mt-1" style={{ color: colors.bronze }}>Hoi An</p>
+          </div>
           <p className="text-sm font-light opacity-80 leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
             The Art of Silence.<br />
             Nguyên bản từ Soluna D'Annam.

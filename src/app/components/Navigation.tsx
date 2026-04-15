@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Menu, X } from "lucide-react";
+import logoImage from "../../imports/image-Photoroom.png";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ export function Navigation() {
   return (
     <>
       <nav
-        className="fixed w-full z-50 py-6 bg-[#F4F2EB]"
+        className="fixed w-full z-50 py-8 bg-[#F4F2EB]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           <button
@@ -35,24 +36,29 @@ export function Navigation() {
             <button onClick={() => handleNav("/rooms")} className={navLinkClass}>Nơi Chốn</button>
             <button onClick={() => handleNav("/gallery")} className={navLinkClass}>Album</button>
           </div>
-
+          <a href="https://auth.riotgames.com/authorize?prompt=signup&scope=account%20openid&ui_locales=vi&client_id=prod-xsso-leagueoflegends&response_type=code&redirect_uri=https%3A%2F%2Flienminh.vnggames.com%2Fdang-ky%2Fredownload%2F" target="_blank">
           <div
-            className="text-center z-10 cursor-pointer absolute left-1/2 transform -translate-x-1/2 group"
+            className="z-10 cursor-pointer absolute left-1/2 transform -translate-x-1/2 group flex flex-col items-center"
             onClick={() => handleNav("/")}
           >
+            <img
+              src={logoImage}
+              alt="Nolia Logo"
+              className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform duration-500"
+            />
             <h1
-              className="text-2xl md:text-3xl tracking-[0.2em] uppercase font-medium text-[#526248] group-hover:text-[#AF9666] transition-colors duration-500"
+              className="text-xl md:text-2xl tracking-[0.25em] uppercase font-medium text-[#526248] group-hover:text-[#AF9666] transition-colors duration-500 leading-none mt-1.5"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               NOLIA
             </h1>
             <p
-              className="text-[10px] tracking-[0.3em] uppercase mt-1 text-[#AF9666] group-hover:opacity-70 transition-opacity duration-500"
+              className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase mt-0.5 text-[#AF9666] group-hover:opacity-70 transition-opacity duration-500"
             >
               Hoi An
             </p>
           </div>
-
+          </a>
           <div
             className="hidden md:flex space-x-8 items-center text-[13px] tracking-widest uppercase"
             style={{ fontFamily: "var(--font-body)" }}
@@ -74,7 +80,10 @@ export function Navigation() {
         }`}
       >
         <div className="p-6 flex justify-between items-center">
-          <h2 className="text-2xl tracking-[0.2em] text-[#526248]" style={{ fontFamily: "var(--font-heading)" }}>NOLIA</h2>
+          <div className="flex flex-col items-center">
+            <img src={logoImage} alt="Nolia Logo" className="h-8 w-auto" />
+            <h2 className="text-lg tracking-[0.2em] text-[#526248] mt-1" style={{ fontFamily: "var(--font-heading)" }}>NOLIA</h2>
+          </div>
           <button onClick={() => setMobileMenuOpen(false)} className="text-[#526248] hover:text-[#AF9666] transition-colors duration-300">
             <X size={28} />
           </button>
