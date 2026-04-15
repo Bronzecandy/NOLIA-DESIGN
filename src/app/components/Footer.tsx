@@ -58,7 +58,7 @@ export function Footer() {
           <h3 className="text-xs tracking-widest uppercase mb-6" style={{ fontFamily: "var(--font-body)", color: colors.bronze }}>Khám Phá</h3>
           <ul className="space-y-3 text-sm font-light opacity-80 flex flex-col items-start" style={{ fontFamily: "var(--font-body)" }}>
             <li><button onClick={() => handleNav("/")} className="hover:text-[#AF9666] hover:translate-x-1 transition-all duration-300">Về Chúng Tôi</button></li>
-            <li><button onClick={() => handleNav("/rooms")} className="hover:text-[#AF9666] hover:translate-x-1 transition-all duration-300">Nơi Chốn (Phòng)</button></li>
+            <li><button onClick={() => handleNav("/rooms")} className="hover:text-[#AF9666] hover:translate-x-1 transition-all duration-300">Các Hạng Phòng</button></li>
             <li><button onClick={() => handleNav("/gallery")} className="hover:text-[#AF9666] hover:translate-x-1 transition-all duration-300">Thư Viện Ảnh</button></li>
             <li><button onClick={() => handleNav("/booking")} className="hover:text-[#AF9666] hover:translate-x-1 transition-all duration-300">Đặt Phòng</button></li>
           </ul>

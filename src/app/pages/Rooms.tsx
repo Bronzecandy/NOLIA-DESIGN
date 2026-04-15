@@ -17,10 +17,10 @@ export default function Rooms() {
             className="text-xs md:text-sm tracking-[0.3em] uppercase mb-4 block"
             style={{ fontFamily: "var(--font-body)", color: colors.bronze }}
           >
-            Nơi Chốn
+            Các Hạng Phòng
           </span>
           <h2 className="text-4xl md:text-5xl" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
-            Các Hạng Phòng
+            Không gian lưu trú
           </h2>
           <p className="text-sm mt-6 opacity-80 max-w-2xl mx-auto" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
             Mỗi căn phòng tại Nolia đều được thiết kế tối giản, trân trọng ánh sáng tự nhiên và khoảng không gian tĩnh lặng, mang đến cho bạn giấc ngủ trọn vẹn nhất.

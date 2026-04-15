@@ -100,8 +100,8 @@ function WellnessSection() {
           </p>
           <button
             onClick={() => navigate("/booking")}
-            className="px-8 py-3 text-sm tracking-widest uppercase border transition-all duration-500 hover:bg-[#526248] hover:text-[#F4F2EB] hover:border-[#526248]"
-            style={{ fontFamily: "var(--font-body)", borderColor: colors.green, color: colors.green }}
+            className="px-8 py-3 text-sm tracking-widest uppercase border border-[#526248] text-[#526248] transition-all duration-500 hover:bg-[#526248] hover:text-[#F4F2EB] hover:border-[#526248]"
+            style={{ fontFamily: "var(--font-body)" }}
           >
             Đặt Dịch Vụ
           </button>

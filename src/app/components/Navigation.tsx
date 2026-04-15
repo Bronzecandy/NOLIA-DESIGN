@@ -33,7 +33,7 @@ export function Navigation() {
             style={{ fontFamily: "var(--font-body)" }}
           >
             <button onClick={() => handleNav("/")} className={navLinkClass}>Trang Chủ</button>
-            <button onClick={() => handleNav("/rooms")} className={navLinkClass}>Nơi Chốn</button>
+            <button onClick={() => handleNav("/rooms")} className={navLinkClass}>Các Hạng Phòng</button>
             <button onClick={() => handleNav("/gallery")} className={navLinkClass}>Album</button>
           </div>
           <div
@@ -88,7 +88,7 @@ export function Navigation() {
         </div>
         <div className="flex flex-col items-center justify-center h-3/4 space-y-8 text-2xl" style={{ fontFamily: "var(--font-heading)" }}>
           <button onClick={() => handleNav("/")} className="text-[#526248] hover:text-[#AF9666] transition-colors duration-300">Trang Chủ</button>
-          <button onClick={() => handleNav("/rooms")} className="text-[#526248] hover:text-[#AF9666] transition-colors duration-300">Nơi Chốn</button>
+          <button onClick={() => handleNav("/rooms")} className="text-[#526248] hover:text-[#AF9666] transition-colors duration-300">Các Hạng Phòng</button>
           <button onClick={() => handleNav("/gallery")} className="text-[#526248] hover:text-[#AF9666] transition-colors duration-300">Thư Viện Ảnh</button>
           <button onClick={() => handleNav("/experiences")} className="text-[#526248] hover:text-[#AF9666] transition-colors duration-300">Trải Nghiệm</button>
           <button
