@@ -36,7 +36,6 @@ export function Navigation() {
             <button onClick={() => handleNav("/rooms")} className={navLinkClass}>Nơi Chốn</button>
             <button onClick={() => handleNav("/gallery")} className={navLinkClass}>Album</button>
           </div>
-          <a href="https://auth.riotgames.com/authorize?prompt=signup&scope=account%20openid&ui_locales=vi&client_id=prod-xsso-leagueoflegends&response_type=code&redirect_uri=https%3A%2F%2Flienminh.vnggames.com%2Fdang-ky%2Fredownload%2F" target="_blank">
           <div
             className="z-10 cursor-pointer absolute left-1/2 transform -translate-x-1/2 group flex flex-col items-center"
             onClick={() => handleNav("/")}
@@ -47,7 +46,7 @@ export function Navigation() {
               className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform duration-500"
             />
             <h1
-              className="text-xl md:text-2xl tracking-[0.25em] uppercase font-medium text-[#526248] group-hover:text-[#AF9666] transition-colors duration-500 leading-none mt-1.5"
+              className="text-xl md:text-2xl tracking-[0.25em] uppercase font-medium text-[#526248] group-hover:text-[#AF9666] transition-colors duration-500 leading-none -mt-0.5"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               NOLIA
@@ -58,7 +57,6 @@ export function Navigation() {
               Hoi An
             </p>
           </div>
-          </a>
           <div
             className="hidden md:flex space-x-8 items-center text-[13px] tracking-widest uppercase"
             style={{ fontFamily: "var(--font-body)" }}
