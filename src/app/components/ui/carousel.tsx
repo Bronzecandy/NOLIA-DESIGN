@@ -132,13 +132,18 @@ function Carousel({
   );
 }
 
-function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
+type CarouselContentProps = React.ComponentProps<"div"> & {
+  /** Gắn lên viewport (node có ref Embla + overflow-hidden), ví dụ `py-6` để mép bo góc không bị cắt khi slide scale lớn. */
+  viewportClassName?: string;
+};
+
+function CarouselContent({ className, viewportClassName, ...props }: CarouselContentProps) {
   const { carouselRef, orientation } = useCarousel();
 
   return (
     <div
       ref={carouselRef}
-      className="overflow-hidden"
+      className={cn("overflow-hidden", viewportClassName)}
       data-slot="carousel-content"
     >
       <div

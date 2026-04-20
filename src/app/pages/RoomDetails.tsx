@@ -1,103 +1,105 @@
 import { useParams, useNavigate } from "react-router";
 import { MoveLeft } from "lucide-react";
-import { roomsData } from "../data/rooms";
+import { formatVnd, roomById } from "../data/rooms";
+import { useLanguage } from "../context/LanguageContext";
+import { shellGutter, shellMax } from "../shell";
 
-const colors = {
-  bg: '#F4F2EB',
-  green: '#526248',
-  bronze: '#AF9666',
-};
+const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB", sand: "#EDEAE0" };
 
 export default function RoomDetails() {
-  const { roomId } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
-  const room = roomsData.find((r) => r.id === roomId);
+  const { locale } = useLanguage();
+  const room = roomById(slug);
 
   if (!room) {
     return (
-      <div className="pt-36 pb-24 px-6 min-h-screen text-center">
-        <p style={{ fontFamily: "var(--font-body)" }}>Không tìm thấy phòng này.</p>
+      <div className={`pt-20 md:pt-24 pb-24 min-h-screen text-center ${shellGutter}`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+        <div className={shellMax}>{locale === "vi" ? "Không tìm thấy phòng này." : "Room not found."}</div>
       </div>
     );
   }
 
   return (
-    <div className="pt-32 pb-24 min-h-screen">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className={`pt-20 md:pt-24 pb-24 min-h-screen ${shellGutter}`} style={{ color: colors.green }}>
+      <div className={shellMax}>
         <button
-          onClick={() => navigate("/rooms")}
-          className="group flex items-center text-xs tracking-widest uppercase mb-8 hover:text-[#526248] transition-colors duration-300"
+          type="button"
+          onClick={() => navigate(`/rooms/${room.collection}`)}
+          className="group flex items-center text-xs tracking-widest uppercase mb-8 hover:opacity-80 transition-opacity"
           style={{ fontFamily: "var(--font-body)", color: colors.bronze }}
         >
-          <MoveLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform duration-300" /> Trở lại danh sách
+          <MoveLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />{" "}
+          {locale === "vi" ? "Về loại phòng trong hạng" : "Back to category"}
         </button>
 
-        <div className="mb-12">
-          <span
-            className="text-xs tracking-[0.3em] uppercase block mb-4"
-            style={{ fontFamily: "var(--font-body)", color: colors.bronze }}
-          >
-            The Magnolia Collection
-          </span>
-          <h1 className="text-4xl md:text-6xl" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
-            {room.name}
-          </h1>
-        </div>
-      </div>
-
-      <div className="w-full aspect-[21/9] md:aspect-[21/7] overflow-hidden mb-16 group">
-        <img
-          src={room.image}
-          alt={room.name}
-          className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-[2s] ease-out"
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-16">
-        <div className="w-full md:w-2/3">
-          <h3 className="text-2xl mb-6" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>Về không gian này</h3>
-          <p
-            className="text-base leading-relaxed opacity-90 mb-8 whitespace-pre-line"
-            style={{ fontFamily: "var(--font-body)", color: colors.green }}
-          >
-            {room.fullDesc}
-          </p>
+        <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+              NOLIA · {locale === "vi" ? "Hạng phòng" : "Room type"}
+            </span>
+            <h1 className="text-4xl md:text-6xl" style={{ fontFamily: "var(--font-heading)" }}>
+              {room.name[locale]}
+            </h1>
+          </div>
+          <div className="border px-5 py-4 text-base shrink-0" style={{ borderColor: "rgba(82,98,72,0.2)", backgroundColor: colors.sand }}>
+            <p className="text-[11px] uppercase tracking-widest opacity-80" style={{ fontFamily: "var(--font-body)" }}>
+              {locale === "vi" ? "Từ" : "From"}
+            </p>
+            <p className="text-xl md:text-2xl" style={{ fontFamily: "var(--font-heading)" }}>
+              {formatVnd(room.priceFromVnd, locale)} VND
+            </p>
+            {room.discountLabel ? (
+              <p className="text-sm mt-1" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+                {room.discountLabel}
+              </p>
+            ) : null}
+          </div>
         </div>
 
-        <div className="w-full md:w-1/3">
-          <div className="p-8 border hover:shadow-lg transition-shadow duration-500" style={{ borderColor: 'rgba(175, 150, 102, 0.3)', backgroundColor: '#EDEAE0' }}>
-            <h3
-              className="text-xl mb-6 border-b pb-4"
-              style={{ fontFamily: "var(--font-heading)", color: colors.green, borderColor: 'rgba(82, 98, 72, 0.2)' }}
-            >
-              Thông tin phòng
-            </h3>
-            <ul className="space-y-4 text-sm mb-8" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
-              <li className="flex justify-between">
-                <span className="opacity-70">Diện tích</span>
-                <span className="font-medium">{room.size}</span>
-              </li>
-              <li className="flex justify-between">
-                <span className="opacity-70">Giường</span>
-                <span className="font-medium text-right">{room.bed}</span>
-              </li>
-              <li className="flex justify-between">
-                <span className="opacity-70">Góc nhìn</span>
-                <span className="font-medium text-right">{room.view}</span>
-              </li>
-              <li className="flex justify-between">
-                <span className="opacity-70">Sức chứa</span>
-                <span className="font-medium text-right">Tối đa 2 Người lớn</span>
-              </li>
-            </ul>
+        <div className="w-full aspect-[21/9] md:aspect-[21/8] overflow-hidden mb-12 md:mb-16 group">
+          <img src={room.image} alt={room.name[locale]} className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-[2s] ease-out" />
+        </div>
 
-            <button
-              onClick={() => navigate("/booking")}
-              className="w-full py-4 text-sm tracking-widest uppercase transition-all duration-500 bg-[#526248] text-[#F4F2EB] hover:bg-[#AF9666]"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              Đặt Phòng Ngay
-            </button>
+        <div className="flex flex-col md:flex-row gap-12 md:gap-16">
+          <div className="w-full md:w-2/3">
+            <h2 className="text-2xl mb-4" style={{ fontFamily: "var(--font-heading)" }}>
+              {locale === "vi" ? "Về không gian này" : "About this space"}
+            </h2>
+            <p className="text-base md:text-lg leading-relaxed opacity-90 whitespace-pre-line" style={{ fontFamily: "var(--font-body)" }}>
+              {room.fullDesc[locale]}
+            </p>
+          </div>
+
+          <div className="w-full md:w-1/3">
+            <div className="p-6 md:p-8 border hover:shadow-lg transition-shadow duration-500" style={{ borderColor: "rgba(175, 150, 102, 0.3)", backgroundColor: colors.sand }}>
+              <h3 className="text-xl mb-6 border-b pb-4" style={{ fontFamily: "var(--font-heading)", borderColor: "rgba(82, 98, 72, 0.2)" }}>
+                {locale === "vi" ? "Thông tin phòng" : "Room details"}
+              </h3>
+              <ul className="space-y-3 text-base mb-8" style={{ fontFamily: "var(--font-body)" }}>
+                <li className="flex justify-between gap-4">
+                  <span className="opacity-70">{locale === "vi" ? "Diện tích" : "Size"}</span>
+                  <span className="font-medium">{room.size}</span>
+                </li>
+                <li className="flex justify-between gap-4">
+                  <span className="opacity-70">{locale === "vi" ? "Giường" : "Bed"}</span>
+                  <span className="font-medium text-right">{room.bed[locale]}</span>
+                </li>
+                <li className="flex justify-between gap-4">
+                  <span className="opacity-70">{locale === "vi" ? "Góc nhìn" : "View"}</span>
+                  <span className="font-medium text-right">{room.view[locale]}</span>
+                </li>
+              </ul>
+
+              <button
+                type="button"
+                onClick={() => navigate("/booking")}
+                className="w-full py-4 text-xs tracking-[0.18em] uppercase transition-all duration-500 bg-[#526248] text-[#F4F2EB] hover:bg-[#AF9666]"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                {locale === "vi" ? "Đặt phòng" : "Book now"}
+              </button>
+            </div>
           </div>
         </div>
       </div>

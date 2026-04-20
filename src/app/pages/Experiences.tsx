@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { shellGutter, shellMax } from "../shell";
 
 const colors = {
   bg: '#F4F2EB',
@@ -65,9 +66,9 @@ export default function Experiences() {
   const navigate = useNavigate();
 
   return (
-    <main className="pt-36 pb-24 min-h-screen">
-      <section className="px-6 md:px-12 mb-20">
-        <div className="max-w-7xl mx-auto text-center">
+    <main className={`pt-20 md:pt-24 pb-24 min-h-screen ${shellGutter}`}>
+      <section className="mb-20">
+        <div className={`${shellMax} text-center`}>
           <span
             className="text-xs md:text-sm tracking-[0.3em] uppercase mb-4 block"
             style={{ fontFamily: "var(--font-body)", color: colors.bronze }}
@@ -87,8 +88,8 @@ export default function Experiences() {
         </div>
       </section>
 
-      <section className="px-6 md:px-12">
-        <div className="max-w-7xl mx-auto space-y-32">
+      <section>
+        <div className={`${shellMax} space-y-32`}>
           {experiences.map((exp, index) => {
             const isEven = index % 2 === 0;
 
@@ -160,8 +161,8 @@ export default function Experiences() {
         </div>
       </section>
 
-      <section className="mt-32 py-24 px-6 md:px-12" style={{ backgroundColor: colors.green }}>
-        <div className="max-w-4xl mx-auto text-center">
+      <section className={`mt-32 py-24 ${shellGutter}`} style={{ backgroundColor: colors.green }}>
+        <div className="max-w-4xl mx-auto w-full text-center">
           <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: "var(--font-heading)", color: colors.bg }}>
             Thiết Kế Lịch Trình Riêng
           </h2>
