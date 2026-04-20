@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { MoveLeft } from "lucide-react";
+import { RoomDiscountLine } from "../components/RoomDiscountLine";
 import { formatVnd, isTierSlug, roomsInTier, tierMeta } from "../data/rooms";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
@@ -80,11 +81,7 @@ export default function RoomTierPage() {
                     {locale === "vi" ? "Từ" : "From"}{" "}
                     <span className="text-sm font-medium">{formatVnd(room.priceFromVnd, locale)} VND</span>
                   </p>
-                  {room.discountLabel ? (
-                    <p className="text-xs mt-0.5" style={{ fontFamily: "var(--font-accent)" }}>
-                      {room.discountLabel}
-                    </p>
-                  ) : null}
+                  {room.discountLabel ? <RoomDiscountLine label={room.discountLabel} tone="onDark" /> : null}
                 </div>
               </div>
               <div className="p-5 flex flex-col flex-1">

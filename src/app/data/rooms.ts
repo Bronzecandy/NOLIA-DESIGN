@@ -168,6 +168,13 @@ export const roomsData: Room[] = [
   },
 ];
 
+/** "15% Off" → phần số nổi bật, phần chữ cân quang học (số % dễ bị trông nhỏ hơn chữ). */
+export function splitDiscountLabel(label: string): { pct: string; tail: string } | null {
+  const m = label.trim().match(/^(\d+%)\s*(.+)$/i);
+  if (!m) return null;
+  return { pct: m[1], tail: m[2] };
+}
+
 export function formatVnd(n: number, locale: "vi" | "en") {
   return new Intl.NumberFormat(locale === "vi" ? "vi-VN" : "en-US", {
     maximumFractionDigits: 0,

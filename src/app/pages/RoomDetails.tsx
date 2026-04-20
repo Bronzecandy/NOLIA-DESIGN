@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router";
 import { MoveLeft } from "lucide-react";
+import { RoomDiscountLine } from "../components/RoomDiscountLine";
 import { formatVnd, roomById } from "../data/rooms";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
@@ -50,9 +51,7 @@ export default function RoomDetails() {
               {formatVnd(room.priceFromVnd, locale)} VND
             </p>
             {room.discountLabel ? (
-              <p className="text-sm mt-1" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
-                {room.discountLabel}
-              </p>
+              <RoomDiscountLine label={room.discountLabel} tone="onSand" className="mt-3 pt-2.5" />
             ) : null}
           </div>
         </div>

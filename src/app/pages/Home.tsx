@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { ChevronRight } from "lucide-react";
 import { Hero } from "../components/Hero";
 import { BookingEngineBar } from "../components/BookingEngineBar";
+import { RoomDiscountLine } from "../components/RoomDiscountLine";
 import { roomsData, formatVnd } from "../data/rooms";
 import { servicePages } from "../data/services";
 import { useLanguage } from "../context/LanguageContext";
@@ -111,11 +112,7 @@ function HomeRoomsCarousel() {
                         {locale === "vi" ? "Từ" : "From"}{" "}
                         <span className="text-base font-medium">{formatVnd(room.priceFromVnd, locale)} VND</span>
                       </p>
-                      {room.discountLabel ? (
-                        <p className="text-xs mt-0.5" style={{ fontFamily: "var(--font-accent)" }}>
-                          {room.discountLabel}
-                        </p>
-                      ) : null}
+                      {room.discountLabel ? <RoomDiscountLine label={room.discountLabel} tone="onDark" /> : null}
                     </div>
                   </div>
                   <h3 className="text-xl md:text-2xl mb-1 group-hover:text-[#AF9666] transition-colors" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
