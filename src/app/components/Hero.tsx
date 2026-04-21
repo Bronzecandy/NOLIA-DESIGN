@@ -62,8 +62,8 @@ function slideVisual(logicalIndex: number, selectedLogical: number): {
     shell: {
       boxShadow:
         d === 0
-          ? "0 20px 48px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.12)"
-          : "0 10px 28px rgba(0,0,0,0.12)",
+          ? "0 8px 22px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(255,255,255,0.1)"
+          : "0 5px 14px rgba(0,0,0,0.07)",
       transition: "box-shadow 0.45s ease",
     },
     zIndex: 40 - d * 10,
