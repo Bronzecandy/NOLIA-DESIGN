@@ -40,7 +40,7 @@ export default function RestaurantBarHub() {
                 <h2 className={`${tx.cardTitle} group-hover:text-[#AF9666] transition-colors`} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
                   {s.title[locale]}
                 </h2>
-                <p className={`${tx.body} mt-2 line-clamp-3`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                <p className={`${tx.cardLead} mt-2 line-clamp-3`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                   {s.intro[locale]}
                 </p>
               </div>

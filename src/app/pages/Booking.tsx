@@ -170,7 +170,7 @@ export default function Booking() {
                             {locale === "vi" ? `Còn ${units} ${c.availRoomsWord}` : `${units} ${c.availRoomsWord}`}
                           </span>
                         </div>
-                        <p className={`${tx.body} line-clamp-2 mb-4 flex-1`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                        <p className={`${tx.cardLead} line-clamp-2 mb-4 flex-1`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                           {room.shortDesc[locale]}
                         </p>
                         <div className="text-sm mb-4 w-max max-w-full" style={{ fontFamily: "var(--font-body)", color: colors.green }}>

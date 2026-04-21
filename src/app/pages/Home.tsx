@@ -121,7 +121,7 @@ function HomeRoomsCarousel() {
                   >
                     {room.name[locale]}
                   </h3>
-                  <p className={`${tx.body} line-clamp-2`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                  <p className={`${tx.cardLead} line-clamp-2 mt-0.5`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                     {room.shortDesc[locale]}
                   </p>
                 </button>

@@ -4,6 +4,7 @@
  *
  * Gợi ý: body mặc định `text-base md:text-lg font-light opacity-90`;
  * page title `text-4xl md:text-5xl`; section title (có đoạn mô tả bên dưới) `text-2xl sm:text-3xl md:text-4xl`.
+ * Thẻ phòng/dịch vụ: `cardTitle` (lớn) + `cardLead` (mô tả ngắn dưới tiêu đề — nhỏ hơn `body` để phân tầng rõ).
  */
 export const tx = {
   eyebrowAccent: "text-xs tracking-[0.28em] uppercase block mb-2 md:mb-3",
@@ -14,7 +15,10 @@ export const tx = {
   /** Section phụ (Maps, collage…) — h2 một dòng, thường không cần mb-6 */
   sectionHeading: "text-3xl md:text-4xl leading-snug mb-4 md:mb-6",
   subsectionTitle: "text-2xl md:text-3xl leading-snug mb-2 md:mb-3",
-  cardTitle: "text-xl md:text-2xl leading-snug mb-1 md:mb-2",
+  /** Tiêu đề thẻ (tên phòng, venue…) — tách rõ khỏi mô tả ngắn (`cardLead`). */
+  cardTitle: "text-2xl md:text-3xl leading-snug mb-2 md:mb-3",
+  /** Một đoạn dưới `cardTitle` (tagline / shortDesc) — cỡ nhỏ hơn `body` để hierarchy rõ. */
+  cardLead: "text-sm md:text-base leading-relaxed opacity-88 font-light",
   body: "text-base md:text-lg leading-relaxed opacity-90 font-light",
   bodyTight: "text-base md:text-lg leading-relaxed opacity-90 font-light max-w-3xl",
   bodyIntro: "text-base md:text-lg leading-relaxed opacity-90 font-light max-w-3xl mb-10 md:mb-12",

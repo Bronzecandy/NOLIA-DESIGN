@@ -51,19 +51,21 @@ export function Navigation() {
         style={{ backgroundColor: "rgba(244,242,235,0.94)", backdropFilter: "blur(10px)" }}
       >
         <div className={`${shellMax} py-1.5 md:py-2`}>
-          {/* Mobile: 3 cột căn giữa theo trục dọc */}
-          <div className="flex md:hidden items-center justify-between gap-2 min-h-[52px]">
-            <button type="button" className="p-2 -ml-1 text-[#526248] flex items-center justify-center" onClick={() => setMobileOpen(true)} aria-label="Menu">
-              <Menu size={22} />
-            </button>
-            <button type="button" className="flex flex-col items-center gap-1 shrink-0 py-0.5" onClick={() => go("/")}>
+          {/** Mobile / tablet: `1fr auto 1fr` — hai bên cân bằng, cột giữa = logo → tâm thật sự giữa header (không bị lệch như `justify-between`). */}
+          <div className="grid grid-cols-[1fr_auto_1fr] md:hidden items-center min-h-[52px]">
+            <div className="flex items-center justify-start min-w-0">
+              <button type="button" className="p-2 -ml-1 text-[#526248] flex items-center justify-center shrink-0" onClick={() => setMobileOpen(true)} aria-label="Menu">
+                <Menu size={22} />
+              </button>
+            </div>
+            <button type="button" className="flex flex-col items-center gap-1 shrink-0 py-0.5 justify-self-center" onClick={() => go("/")}>
               <img src={logoMark} alt="" className="h-9 w-auto max-h-9 object-contain" />
               <span className="text-xs tracking-[0.2em] uppercase font-medium text-[#526248] leading-none" style={{ fontFamily: "var(--font-heading)" }}>
                 NOLIA
               </span>
               <span className="text-[9px] tracking-[0.22em] uppercase text-[#AF9666] leading-none">HOI AN</span>
             </button>
-            <div className="flex items-center gap-1.5 text-[12px] leading-none shrink-0" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+            <div className="flex items-center justify-end gap-1.5 text-[12px] leading-none shrink-0 min-w-0" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
               <button type="button" className={`px-1.5 py-1 ${locale === "vi" ? "text-[#AF9666]" : "opacity-55"}`} onClick={() => setLocale("vi")}>
                 VN
               </button>

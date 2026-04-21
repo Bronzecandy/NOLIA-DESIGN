@@ -97,7 +97,7 @@ export default function RoomTierPage() {
                 >
                   {room.name[locale]}
                 </h3>
-                <p className={`${tx.body} flex-1`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                <p className={`${tx.cardLead} flex-1`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                   {room.shortDesc[locale]}
                 </p>
                 <span className="text-xs tracking-widest uppercase mt-4" style={{ fontFamily: "var(--font-body)", color: colors.bronze }}>
