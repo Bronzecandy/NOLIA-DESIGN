@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
-import logoImage from "../../imports/image-Photoroom.png";
+import logoMark from "../../assets/brand/nolia-mark.png";
 import { useLanguage } from "../context/LanguageContext";
 import { roomsInTier, TIER_ORDER, tierMeta } from "../data/rooms";
 
@@ -52,18 +52,16 @@ export function Navigation() {
       >
         <div className={`${shellMax} py-1.5 md:py-2`}>
           {/* Mobile: 3 cột căn giữa theo trục dọc */}
-          <div className="flex md:hidden items-center justify-between gap-2 min-h-[44px]">
+          <div className="flex md:hidden items-center justify-between gap-2 min-h-[52px]">
             <button type="button" className="p-2 -ml-1 text-[#526248] flex items-center justify-center" onClick={() => setMobileOpen(true)} aria-label="Menu">
               <Menu size={22} />
             </button>
-            <button type="button" className="flex flex-row items-center gap-2 shrink-0" onClick={() => go("/")}>
-              <img src={logoImage} alt="Nolia" className="h-8 w-auto" />
-              <div className="flex flex-col justify-center leading-none text-left">
-                <span className="text-[11px] tracking-[0.2em] uppercase font-medium text-[#526248]" style={{ fontFamily: "var(--font-heading)" }}>
-                  NOLIA
-                </span>
-                <span className="text-[8px] tracking-[0.22em] uppercase text-[#AF9666]">Hoi An</span>
-              </div>
+            <button type="button" className="flex flex-col items-center gap-1 shrink-0 py-0.5" onClick={() => go("/")}>
+              <img src={logoMark} alt="" className="h-9 w-auto max-h-9 object-contain" />
+              <span className="text-xs tracking-[0.2em] uppercase font-medium text-[#526248] leading-none" style={{ fontFamily: "var(--font-heading)" }}>
+                NOLIA
+              </span>
+              <span className="text-[9px] tracking-[0.22em] uppercase text-[#AF9666] leading-none">HOI AN</span>
             </button>
             <div className="flex items-center gap-1.5 text-[12px] leading-none shrink-0" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
               <button type="button" className={`px-1.5 py-1 ${locale === "vi" ? "text-[#AF9666]" : "opacity-55"}`} onClick={() => setLocale("vi")}>
@@ -77,8 +75,8 @@ export function Navigation() {
           </div>
 
           {/* Desktop: grid 1fr auto 1fr — một hàng, căn giữa dọc */}
-          <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-4 md:min-h-[44px]">
-            <div className="flex items-center gap-5 lg:gap-7 min-w-0 justify-start flex-wrap">
+          <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-4 md:min-h-[52px]">
+            <div className="flex items-center gap-3 md:gap-4 lg:gap-6 min-w-0 justify-start">
               <button type="button" className={navLink} style={{ fontFamily: "var(--font-body)" }} onClick={() => go("/")}>
                 {t("home")}
               </button>
@@ -146,7 +144,21 @@ export function Navigation() {
               <button type="button" className={navLink} style={{ fontFamily: "var(--font-body)" }} onClick={() => go("/gallery")}>
                 {t("gallery")}
               </button>
+            </div>
 
+            <button
+              type="button"
+              className="flex flex-col items-center justify-center gap-1 shrink-0 justify-self-center py-0.5"
+              onClick={() => go("/")}
+            >
+              <img src={logoMark} alt="" className="h-11 w-auto max-h-11 object-contain md:h-12 md:max-h-12" />
+              <span className="text-sm tracking-[0.22em] uppercase font-medium text-[#526248] leading-none" style={{ fontFamily: "var(--font-heading)" }}>
+                NOLIA
+              </span>
+              <span className="text-[10px] tracking-[0.24em] uppercase text-[#AF9666] leading-none">HOI AN</span>
+            </button>
+
+            <div className="flex items-center justify-end gap-2 md:gap-3 lg:gap-4 min-w-0 flex-wrap sm:flex-nowrap">
               <div
                 className="relative"
                 onMouseEnter={() => {
@@ -164,7 +176,7 @@ export function Navigation() {
                 </button>
                 {servicesOpen ? (
                   <div
-                    className="absolute left-0 top-full pt-2 w-64 z-[90]"
+                    className="absolute right-0 top-full pt-2 w-64 z-[90]"
                     onMouseEnter={() => {
                       if (closeTimer.current) clearTimeout(closeTimer.current);
                     }}
@@ -189,24 +201,8 @@ export function Navigation() {
               <button type="button" className={navLink} style={{ fontFamily: "var(--font-body)" }} onClick={() => go("/contact")}>
                 {t("contact")}
               </button>
-            </div>
 
-            <button
-              type="button"
-              className="flex flex-row items-center justify-center gap-2.5 shrink-0 justify-self-center"
-              onClick={() => go("/")}
-            >
-              <img src={logoImage} alt="" className="h-9 w-auto" />
-              <div className="flex flex-col justify-center leading-none text-left">
-                <span className="text-xs tracking-[0.22em] uppercase font-medium text-[#526248]" style={{ fontFamily: "var(--font-heading)" }}>
-                  NOLIA
-                </span>
-                <span className="text-[9px] tracking-[0.24em] uppercase text-[#AF9666]">Hoi An</span>
-              </div>
-            </button>
-
-            <div className="flex items-center justify-end gap-4 min-w-0">
-              <div className="flex items-center gap-0.5 text-[13px] leading-none" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+              <div className="flex items-center gap-0.5 text-[13px] leading-none shrink-0" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                 <button type="button" className={`h-9 px-2 inline-flex items-center ${locale === "vi" ? "text-[#AF9666]" : "opacity-55 hover:opacity-100"}`} onClick={() => setLocale("vi")}>
                   VN
                 </button>
@@ -235,10 +231,13 @@ export function Navigation() {
         style={{ backgroundColor: colors.cream }}
       >
         <div className="p-4 flex justify-between items-center border-b" style={{ borderColor: "rgba(82,98,72,0.1)" }}>
-          <div className="flex items-center gap-2">
-            <img src={logoImage} alt="" className="h-8 w-auto" />
-            <span className="text-sm tracking-[0.15em] uppercase" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+          <div className="flex flex-col items-start gap-1">
+            <img src={logoMark} alt="" className="h-10 w-auto max-h-10 object-contain" />
+            <span className="text-sm tracking-[0.18em] uppercase leading-none" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
               NOLIA
+            </span>
+            <span className="text-[10px] tracking-[0.22em] uppercase leading-none" style={{ color: colors.bronze }}>
+              HOI AN
             </span>
           </div>
           <button type="button" onClick={() => setMobileOpen(false)} className="p-2 text-[#526248]" aria-label="Close">

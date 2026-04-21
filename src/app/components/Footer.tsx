@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { MapPin, Phone, Mail, Instagram, Facebook, ChevronRight } from "lucide-react";
-import logoImage from "../../imports/image-Photoroom.png";
+import logoMark from "../../assets/brand/nolia-mark.png";
 import { shellGutter, shellMax } from "../shell";
 
 const colors = {
@@ -22,14 +22,14 @@ export function Footer() {
       <div className={`${shellMax} grid grid-cols-1 md:grid-cols-4 gap-12 mb-16`}>
         <div className="md:col-span-1">
           <div className="flex flex-col items-start mb-4 cursor-pointer group" onClick={() => handleNav("/")}>
-            <img src={logoImage} alt="Nolia Logo" className="h-10 w-auto group-hover:scale-105 transition-transform duration-300" />
+            <img src={logoMark} alt="Nolia" className="h-16 w-auto max-h-16 object-contain group-hover:scale-105 transition-transform duration-300" />
             <h2
               className="text-2xl tracking-[0.15em] group-hover:text-[#AF9666] transition-colors duration-300 leading-none mt-2"
               style={{ fontFamily: "var(--font-heading)", color: colors.green }}
             >
               NOLIA
             </h2>
-            <p className="text-[9px] tracking-[0.3em] uppercase mt-1" style={{ color: colors.bronze }}>Hoi An</p>
+            <p className="text-[9px] tracking-[0.3em] uppercase mt-1" style={{ color: colors.bronze }}>HOI AN</p>
           </div>
           <p className="text-base font-light opacity-80 leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
             The Art of Silence.<br />

@@ -85,7 +85,7 @@ function HomeRoomsCarousel() {
           </button>
         </div>
 
-        <Carousel opts={{ loop: true, align: "start" }} className="relative px-8 md:px-12">
+        <Carousel opts={{ loop: true, align: "start" }} className="relative px-2 sm:px-4 md:px-6">
           <CarouselContent className="-ml-3 md:-ml-4">
             {roomsData.map((room) => (
               <CarouselItem key={room.id} className="pl-3 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
@@ -125,8 +125,8 @@ function HomeRoomsCarousel() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex border-[#526248] text-[#526248] hover:bg-[#526248] hover:text-[#F4F2EB]" />
-          <CarouselNext className="hidden md:flex border-[#526248] text-[#526248] hover:bg-[#526248] hover:text-[#F4F2EB]" />
+          <CarouselPrevious className="hidden md:flex size-10 border-[#526248] text-[#526248] hover:bg-[#526248] hover:text-[#F4F2EB]" />
+          <CarouselNext className="hidden md:flex size-10 border-[#526248] text-[#526248] hover:bg-[#526248] hover:text-[#F4F2EB]" />
         </Carousel>
       </div>
     </section>
@@ -146,7 +146,7 @@ function HomeMap() {
           {locale === "vi" ? "Google Maps — NOLIA Hội An" : "Google Maps — NOLIA Hoi An"}
         </h2>
         <div className="aspect-[16/9] w-full border overflow-hidden" style={{ borderColor: "rgba(82,98,72,0.15)" }}>
-          <iframe title="Nolia map" src={src} className="w-full h-full border-0 grayscale contrast-[0.92]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+          <iframe title="Nolia map" src={src} className="w-full h-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </div>
         <p className="text-sm opacity-75 mt-3" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
           {locale === "vi"
