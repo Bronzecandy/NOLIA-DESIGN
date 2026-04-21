@@ -151,7 +151,7 @@ export function Hero() {
         {/** Mobile / tablet: dưới carousel, nền tối giản; md+: chồng lên ảnh (kính). Cùng max-width ảnh để mép thẳng hàng. */}
         <div className="relative z-50 mt-3 flex w-full shrink-0 justify-center md:pointer-events-none md:absolute md:inset-x-0 md:bottom-5 md:mt-0 md:shrink md:px-4">
           <div
-            className="w-full max-w-[min(96vw,1380px)] text-center rounded-[1.35rem] md:max-w-lg md:rounded-[1.75rem] border px-5 py-4 sm:px-8 sm:py-5 md:px-9 md:py-5 max-md:border-[rgb(82_98_72/0.18)] max-md:shadow-[0_12px_32px_rgb(82_98_72/0.14)] max-md:backdrop-blur-none max-md:[background:var(--hero-glass-mobile)] md:border-[rgba(244,242,235,0.45)] md:shadow-[0_16px_44px_rgba(82,98,72,0.22),inset_0_1px_0_rgba(244,242,235,0.35)] md:backdrop-blur-md md:backdrop-saturate-[1.15] md:[background:var(--hero-glass-desktop)]"
+            className="w-full max-w-[min(96vw,1380px)] text-center rounded-[1.35rem] md:max-w-lg md:rounded-[1.75rem] border px-5 py-4 sm:px-8 sm:py-5 md:px-9 md:py-5 max-md:border-[rgb(82_98_72/0.18)] max-md:shadow-[0_4px_14px_rgb(82_98_72/0.1)] max-md:backdrop-blur-none max-md:[background:var(--hero-glass-mobile)] md:border-[rgba(244,242,235,0.45)] md:shadow-[0_6px_18px_rgba(82,98,72,0.12),inset_0_1px_0_rgba(244,242,235,0.22)] md:backdrop-blur-md md:backdrop-saturate-[1.15] md:[background:var(--hero-glass-desktop)]"
             style={
               {
                 ["--hero-glass-mobile"]: heroGlassBgMobile,
@@ -170,7 +170,7 @@ export function Hero() {
               {locale === "vi" ? "Nơi nghệ thuật tĩnh lặng lên ngôi" : "Where quiet artistry leads"}
             </span>
             <h1
-              className="text-xl leading-tight max-md:drop-shadow-none md:drop-shadow-[0_2px_12px_rgba(0,0,0,0.3)] sm:text-2xl md:text-3xl lg:text-4xl"
+              className="text-xl leading-tight max-md:drop-shadow-none md:drop-shadow-[0_1px_6px_rgba(0,0,0,0.18)] sm:text-2xl md:text-3xl lg:text-4xl"
               style={{ fontFamily: "var(--font-heading)", color: colors.cream }}
             >
               The Art of <span className="italic">Silence</span>
