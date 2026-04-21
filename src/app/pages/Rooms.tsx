@@ -50,7 +50,7 @@ export default function Rooms() {
                   </div>
                 </div>
                 <div className="p-5 md:p-6 flex flex-col flex-1">
-                  <p className="text-sm md:text-base opacity-90 leading-relaxed flex-1 mb-4" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                  <p className="text-base md:text-lg leading-relaxed opacity-90 font-light flex-1 mb-4" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                     {meta.blurb[locale]}
                   </p>
                   <span

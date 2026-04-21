@@ -2,8 +2,8 @@ import { useNavigate } from "react-router";
 import { ChevronRight } from "lucide-react";
 import { Hero } from "../components/Hero";
 import { BookingEngineBar } from "../components/BookingEngineBar";
-import { RoomDiscountLine } from "../components/RoomDiscountLine";
-import { roomsData, formatVnd } from "../data/rooms";
+import { RoomPriceOffer } from "../components/RoomPriceOffer";
+import { roomsData } from "../data/rooms";
 import { servicePages } from "../data/services";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
@@ -101,24 +101,26 @@ function HomeRoomsCarousel() {
                       className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                     />
                     <div
-                      className="absolute left-3 bottom-3 px-3 py-2 text-left max-w-[85%] border backdrop-blur-sm"
+                      className="absolute left-3 bottom-3 max-w-[min(95%,22rem)] px-3 py-1.5 text-left border backdrop-blur-sm w-max"
                       style={{
                         borderColor: "rgba(244,242,235,0.35)",
                         backgroundColor: "rgba(82,98,72,0.82)",
                         color: colors.cream,
                       }}
                     >
-                      <p className="text-[11px] uppercase tracking-widest opacity-90" style={{ fontFamily: "var(--font-body)" }}>
-                        {locale === "vi" ? "Từ" : "From"}{" "}
-                        <span className="text-base font-medium">{formatVnd(room.priceFromVnd, locale)} VND</span>
-                      </p>
-                      {room.discountLabel ? <RoomDiscountLine label={room.discountLabel} tone="onDark" /> : null}
+                      <RoomPriceOffer
+                        priceFromVnd={room.priceFromVnd}
+                        discountLabel={room.discountLabel}
+                        locale={locale}
+                        tone="onDark"
+                        size="md"
+                      />
                     </div>
                   </div>
                   <h3 className="text-xl md:text-2xl mb-1 group-hover:text-[#AF9666] transition-colors" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
                     {room.name[locale]}
                   </h3>
-                  <p className="text-sm md:text-base opacity-80 line-clamp-2" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                  <p className="text-base md:text-lg leading-relaxed opacity-90 font-light line-clamp-2" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                     {room.shortDesc[locale]}
                   </p>
                 </button>

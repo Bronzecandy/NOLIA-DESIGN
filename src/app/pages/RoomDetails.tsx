@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router";
 import { MoveLeft } from "lucide-react";
-import { RoomDiscountLine } from "../components/RoomDiscountLine";
-import { formatVnd, roomById } from "../data/rooms";
+import { RoomPriceOffer } from "../components/RoomPriceOffer";
+import { roomById } from "../data/rooms";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
 
@@ -43,16 +43,17 @@ export default function RoomDetails() {
               {room.name[locale]}
             </h1>
           </div>
-          <div className="border px-5 py-4 text-base shrink-0" style={{ borderColor: "rgba(82,98,72,0.2)", backgroundColor: colors.sand }}>
-            <p className="text-[11px] uppercase tracking-widest opacity-80" style={{ fontFamily: "var(--font-body)" }}>
-              {locale === "vi" ? "Từ" : "From"}
-            </p>
-            <p className="text-xl md:text-2xl" style={{ fontFamily: "var(--font-heading)" }}>
-              {formatVnd(room.priceFromVnd, locale)} VND
-            </p>
-            {room.discountLabel ? (
-              <RoomDiscountLine label={room.discountLabel} tone="onSand" className="mt-3 pt-2.5" />
-            ) : null}
+          <div
+            className="border px-5 py-3 text-base shrink-0 w-max max-w-full"
+            style={{ borderColor: "rgba(82,98,72,0.2)", backgroundColor: colors.sand }}
+          >
+            <RoomPriceOffer
+              priceFromVnd={room.priceFromVnd}
+              discountLabel={room.discountLabel}
+              locale={locale}
+              tone="onSand"
+              size="lg"
+            />
           </div>
         </div>
 
@@ -65,7 +66,7 @@ export default function RoomDetails() {
             <h2 className="text-2xl mb-4" style={{ fontFamily: "var(--font-heading)" }}>
               {locale === "vi" ? "Về không gian này" : "About this space"}
             </h2>
-            <p className="text-base md:text-lg leading-relaxed opacity-90 whitespace-pre-line" style={{ fontFamily: "var(--font-body)" }}>
+            <p className="text-base md:text-lg leading-relaxed opacity-90 font-light whitespace-pre-line" style={{ fontFamily: "var(--font-body)" }}>
               {room.fullDesc[locale]}
             </p>
           </div>

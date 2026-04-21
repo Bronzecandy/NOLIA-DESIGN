@@ -9,7 +9,9 @@ export interface Room {
   view: { vi: string; en: string };
   bed: { vi: string; en: string };
   image: string;
+  /** Giá "từ" hiển thị; khi có `discountLabel` có %, đây là giá sau giảm (giá gạch suy từ %). */
   priceFromVnd: number;
+  /** Ví dụ "15% Off" — dùng hiển thị và suy giá niêm yết khi có số %. */
   discountLabel?: string;
   collection: TierId;
 }
@@ -167,6 +169,27 @@ export const roomsData: Room[] = [
     discountLabel: "10% Off",
   },
 ];
+
+/** Lấy phần trăm từ nhãn kiểu "15% Off", "12% off" — dùng suy giá trước giảm. */
+export function parseDiscountPercentFromLabel(label?: string): number | null {
+  if (!label) return null;
+  const m = label.trim().match(/(\d+(?:\.\d+)?)\s*%/i);
+  if (!m) return null;
+  const n = Number(m[1]);
+  if (!Number.isFinite(n) || n <= 0 || n >= 100) return null;
+  return n;
+}
+
+/**
+ * Giá niêm yết (gạch ngang) khi `priceFromVnd` là giá sau giảm và % nằm trong `discountLabel`.
+ * Làm tròn nghìn VND cho dễ đọc.
+ */
+export function listPriceBeforeDiscount(salePriceVnd: number, discountLabel?: string): number | null {
+  const pct = parseDiscountPercentFromLabel(discountLabel);
+  if (pct == null) return null;
+  const raw = salePriceVnd / (1 - pct / 100);
+  return Math.round(raw / 1000) * 1000;
+}
 
 /** "15% Off" → phần số nổi bật, phần chữ cân quang học (số % dễ bị trông nhỏ hơn chữ). */
 export function splitDiscountLabel(label: string): { pct: string; tail: string } | null {

@@ -26,7 +26,7 @@ export function RoomDiscountLine({ label, tone, className }: Props) {
 
   return (
     <p
-      className={cn("mt-2 border-t pt-2 not-italic", border, className)}
+      className={cn("not-italic border-t mt-2 pt-2", border, className)}
       style={{ fontFamily: "var(--font-heading)" }}
     >
       {parts ? (

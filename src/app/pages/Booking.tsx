@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import type { Room } from "../data/rooms";
-import { roomsData } from "../data/rooms";
+import { formatVnd, listPriceBeforeDiscount, roomsData } from "../data/rooms";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter } from "../shell";
 
@@ -106,9 +106,6 @@ export default function Booking() {
     setIsSubmitted(true);
   };
 
-  const formatVnd = (n: number) =>
-    new Intl.NumberFormat(locale === "vi" ? "vi-VN" : "en-US", { style: "currency", currency: "VND", maximumFractionDigits: 0 }).format(n);
-
   return (
     <div className={`pt-20 md:pt-24 pb-24 min-h-screen ${shellGutter}`} style={{ backgroundColor: colors.cream }}>
       <div className="mx-auto w-full max-w-6xl">
@@ -149,45 +146,69 @@ export default function Booking() {
               </div>
             ) : (
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
-                {availableRooms.map(({ room, units }) => (
-                  <li
-                    key={room.id}
-                    className="group border overflow-hidden flex flex-col transition-shadow duration-500 hover:shadow-lg"
-                    style={{ borderColor: "rgba(82,98,72,0.12)", backgroundColor: colors.cream }}
-                  >
-                    <div className="aspect-[4/3] overflow-hidden">
-                      <img src={room.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                    </div>
-                    <div className="p-5 flex flex-col flex-1">
-                      <div className="flex items-start justify-between gap-2 mb-2">
-                        <h3 className="text-lg leading-snug" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
-                          {room.name[locale]}
-                        </h3>
-                        <span
-                          className="shrink-0 text-[10px] uppercase tracking-wider px-2 py-1"
-                          style={{ fontFamily: "var(--font-body)", backgroundColor: colors.green, color: colors.cream }}
-                        >
-                          {locale === "vi" ? `Còn ${units} ${c.availRoomsWord}` : `${units} ${c.availRoomsWord}`}
-                        </span>
+                {availableRooms.map(({ room, units }) => {
+                  const listPx = listPriceBeforeDiscount(room.priceFromVnd, room.discountLabel);
+                  return (
+                    <li
+                      key={room.id}
+                      className="group border overflow-hidden flex flex-col transition-shadow duration-500 hover:shadow-lg"
+                      style={{ borderColor: "rgba(82,98,72,0.12)", backgroundColor: colors.cream }}
+                    >
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <img src={room.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                       </div>
-                      <p className="text-sm opacity-80 line-clamp-2 mb-4 flex-1" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
-                        {room.shortDesc[locale]}
-                      </p>
-                      <p className="text-sm mb-4" style={{ fontFamily: "var(--font-body)", color: colors.bronze }}>
-                        {c.fromPrice} {formatVnd(room.priceFromVnd)}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mt-auto">
-                        <Link
-                          to={`/rooms/${room.id}`}
-                          className="text-xs tracking-widest uppercase px-4 py-2.5 border transition-colors hover:bg-[#526248] hover:text-[#F4F2EB] hover:border-[#526248]"
-                          style={{ fontFamily: "var(--font-body)", borderColor: colors.bronze, color: colors.green }}
-                        >
-                          {c.viewRoom}
-                        </Link>
+                      <div className="p-5 flex flex-col flex-1">
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <h3 className="text-lg leading-snug" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+                            {room.name[locale]}
+                          </h3>
+                          <span
+                            className="shrink-0 text-[10px] uppercase tracking-wider px-2 py-1"
+                            style={{ fontFamily: "var(--font-body)", backgroundColor: colors.green, color: colors.cream }}
+                          >
+                            {locale === "vi" ? `Còn ${units} ${c.availRoomsWord}` : `${units} ${c.availRoomsWord}`}
+                          </span>
+                        </div>
+                        <p className="text-base md:text-lg leading-relaxed opacity-90 font-light line-clamp-2 mb-4 flex-1" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                          {room.shortDesc[locale]}
+                        </p>
+                        <div className="text-sm mb-4 w-max max-w-full" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                          <p className="text-[11px] uppercase tracking-widest opacity-70">{c.fromPrice}</p>
+                          {listPx != null ? (
+                            <>
+                              <div className="mt-1 flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
+                                <span className="font-semibold text-[#AF9666] tabular-nums">
+                                  {formatVnd(room.priceFromVnd, locale)} VND
+                                </span>
+                                <span className="line-through opacity-50 tabular-nums text-xs">
+                                  {formatVnd(listPx, locale)} VND
+                                </span>
+                              </div>
+                              {room.discountLabel ? (
+                                <p className="text-[11px] uppercase tracking-wide opacity-80 mt-1.5 border-t border-[rgba(82,98,72,0.15)] pt-1.5">
+                                  {room.discountLabel}
+                                </p>
+                              ) : null}
+                            </>
+                          ) : (
+                            <p className="font-medium tabular-nums mt-0.5" style={{ color: colors.bronze }}>
+                              {formatVnd(room.priceFromVnd, locale)} VND
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex flex-wrap gap-2 mt-auto">
+                          <Link
+                            to={`/rooms/${room.id}`}
+                            className="text-xs tracking-widest uppercase px-4 py-2.5 border transition-colors hover:bg-[#526248] hover:text-[#F4F2EB] hover:border-[#526248]"
+                            style={{ fontFamily: "var(--font-body)", borderColor: colors.bronze, color: colors.green }}
+                          >
+                            {c.viewRoom}
+                          </Link>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                ))}
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </section>

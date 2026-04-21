@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import { MoveLeft } from "lucide-react";
-import { RoomDiscountLine } from "../components/RoomDiscountLine";
-import { formatVnd, isTierSlug, roomsInTier, tierMeta } from "../data/rooms";
+import { RoomPriceOffer } from "../components/RoomPriceOffer";
+import { isTierSlug, roomsInTier, tierMeta } from "../data/rooms";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
 
@@ -74,21 +74,23 @@ export default function RoomTierPage() {
                   className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                 />
                 <div
-                  className="absolute left-3 bottom-3 px-3 py-2 text-left border backdrop-blur-sm max-w-[90%]"
+                  className="absolute left-3 bottom-3 max-w-[min(95%,22rem)] px-3 py-1.5 text-left border backdrop-blur-sm w-max"
                   style={{ borderColor: "rgba(244,242,235,0.35)", backgroundColor: "rgba(82,98,72,0.88)", color: colors.cream }}
                 >
-                  <p className="text-[11px] uppercase tracking-widest" style={{ fontFamily: "var(--font-body)" }}>
-                    {locale === "vi" ? "Từ" : "From"}{" "}
-                    <span className="text-sm font-medium">{formatVnd(room.priceFromVnd, locale)} VND</span>
-                  </p>
-                  {room.discountLabel ? <RoomDiscountLine label={room.discountLabel} tone="onDark" /> : null}
+                  <RoomPriceOffer
+                    priceFromVnd={room.priceFromVnd}
+                    discountLabel={room.discountLabel}
+                    locale={locale}
+                    tone="onDark"
+                    size="sm"
+                  />
                 </div>
               </div>
               <div className="p-5 flex flex-col flex-1">
                 <h3 className="text-xl md:text-2xl mb-2 group-hover:text-[#AF9666] transition-colors" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
                   {room.name[locale]}
                 </h3>
-                <p className="text-sm md:text-base opacity-85 leading-relaxed flex-1" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                <p className="text-base md:text-lg leading-relaxed opacity-90 font-light flex-1" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                   {room.shortDesc[locale]}
                 </p>
                 <span className="text-xs tracking-widest uppercase mt-4" style={{ fontFamily: "var(--font-body)", color: colors.bronze }}>
