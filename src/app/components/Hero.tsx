@@ -14,6 +14,10 @@ import {
 const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB", sand: "#EDEAE0" };
 const themeRgb = { cream: "244,242,235", bronze: "175,150,102", moss: "82,98,72", sand: "237,234,224" };
 
+/** Nền ô chữ hero: mobile dùng 2 màu chính (moss → bronze), không blur — tránh chói; desktop giữ kính mờ. */
+const heroGlassBgMobile = `linear-gradient(155deg, rgba(${themeRgb.moss},0.94) 0%, rgba(${themeRgb.bronze},0.88) 100%)`;
+const heroGlassBgDesktop = `linear-gradient(168deg, rgba(${themeRgb.cream},0.38) 0%, rgba(${themeRgb.sand},0.32) 18%, rgba(${themeRgb.bronze},0.52) 48%, rgba(${themeRgb.moss},0.58) 100%)`;
+
 /** Ảnh gốc — lặp lại trong DOM để Embla loop luôn đủ chiều rộng. */
 const HERO_BASE_SLIDES = [
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop",
@@ -73,6 +77,7 @@ export function Hero() {
   const [selectedLogical, setSelectedLogical] = useState(0);
 
   const syncFromApi = useCallback((embla: CarouselApi) => {
+    if (!embla) return;
     setSelectedLogical(embla.selectedScrollSnap() % N_LOGICAL);
   }, []);
 
@@ -94,8 +99,8 @@ export function Hero() {
 
   return (
     <section className="relative pt-[4.75rem] md:pt-[5.25rem] pb-3 md:pb-5">
-      {/** Full viewport width — tận dụng chiều ngang, slide chữ nhật ngang lớn hơn */}
-      <div className="relative w-screen max-w-[100vw] left-1/2 -translate-x-1/2 overflow-x-hidden overflow-y-visible px-3 sm:px-5 md:px-8 py-3 md:py-5 [perspective:2000px]">
+      {/** Full viewport width — tận dụng chiều ngang, slide chữ nhật ngang lớn hơn. `pt-*` / `pb-*` tách riêng để chỉnh mép trên / dưới. */}
+      <div className="relative flex w-screen max-w-[100vw] flex-col md:block left-1/2 -translate-x-1/2 overflow-x-hidden overflow-y-visible px-3 sm:px-5 md:px-8 pt-3 md:pt-5 pb-3 md:pb-10 [perspective:2000px]">
         <Carousel
           setApi={setApi}
           opts={{
@@ -143,29 +148,29 @@ export function Hero() {
           <CarouselNext className="hidden sm:flex right-1 md:right-2 border-[#526248] text-[#526248] hover:bg-[#526248] hover:text-[#F4F2EB] size-10 z-50 shadow-md disabled:opacity-40" />
         </Carousel>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-3 md:bottom-5 z-50 flex justify-center px-4">
+        {/** Mobile: dưới carousel (static). md+: chồng lên ảnh (absolute). */}
+        <div className="relative z-50 mt-4 flex w-full shrink-0 justify-center px-1 sm:px-2 md:pointer-events-none md:absolute md:inset-x-0 md:bottom-5 md:mt-0 md:shrink md:px-4">
           <div
-            className="max-w-lg text-center rounded-[1.35rem] md:rounded-[1.75rem] border px-7 py-4 md:px-9 md:py-5 shadow-xl backdrop-blur-md backdrop-saturate-[1.15]"
-            style={{
-              background: `linear-gradient(
-                168deg,
-                rgba(${themeRgb.cream},0.38) 0%,
-                rgba(${themeRgb.sand},0.32) 18%,
-                rgba(${themeRgb.bronze},0.52) 48%,
-                rgba(${themeRgb.moss},0.58) 100%
-              )`,
-              borderColor: `rgba(${themeRgb.cream},0.45)`,
-              boxShadow: `0 16px 44px rgba(${themeRgb.moss},0.22), inset 0 1px 0 rgba(${themeRgb.cream},0.35)`,
-            }}
+            className="w-full max-w-lg text-center rounded-[1.35rem] md:rounded-[1.75rem] border px-5 py-4 sm:px-7 md:px-9 md:py-5 md:max-w-lg max-md:border-[rgba(82,98,72,0.42)] max-md:shadow-[0_10px_28px_rgba(0,0,0,0.2)] max-md:backdrop-blur-none max-md:[background:var(--hero-glass-mobile)] md:border-[rgba(244,242,235,0.45)] md:shadow-[0_16px_44px_rgba(82,98,72,0.22),inset_0_1px_0_rgba(244,242,235,0.35)] md:backdrop-blur-md md:backdrop-saturate-[1.15] md:[background:var(--hero-glass-desktop)]"
+            style={
+              {
+                ["--hero-glass-mobile"]: heroGlassBgMobile,
+                ["--hero-glass-desktop"]: heroGlassBgDesktop,
+              } as CSSProperties
+            }
           >
             <span
-              className="text-[10px] md:text-[11px] tracking-[0.28em] uppercase mb-2 block opacity-95"
+              className={
+                locale === "vi"
+                  ? "mb-2 block whitespace-nowrap text-[9px] font-medium uppercase leading-none tracking-[0.12em] opacity-95 sm:text-[10px] sm:tracking-[0.18em] md:text-[11px] md:tracking-[0.26em]"
+                  : "mb-2 block text-[10px] uppercase leading-snug tracking-[0.22em] opacity-95 sm:text-[11px] sm:tracking-[0.26em] md:tracking-[0.28em]"
+              }
               style={{ fontFamily: "var(--font-accent)", color: colors.cream }}
             >
               {locale === "vi" ? "Nơi nghệ thuật tĩnh lặng lên ngôi" : "Where quiet artistry leads"}
             </span>
             <h1
-              className="text-2xl sm:text-3xl md:text-4xl leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.3)]"
+              className="text-xl leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.3)] sm:text-2xl md:text-3xl lg:text-4xl"
               style={{ fontFamily: "var(--font-heading)", color: colors.cream }}
             >
               The Art of <span className="italic">Silence</span>

@@ -7,6 +7,7 @@ import { roomsData } from "../data/rooms";
 import { servicePages } from "../data/services";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
+import { tx } from "../typography";
 import {
   Carousel,
   CarouselContent,
@@ -40,16 +41,13 @@ function HomeStory() {
           />
         </div>
         <div className="order-1 md:order-2 text-left">
-          <span
-            className="text-xs tracking-[0.28em] uppercase block mb-3"
-            style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}
-          >
+          <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
             {locale === "vi" ? "Câu chuyện" : "Our story"}
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl leading-snug mb-6" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+          <h2 className={tx.sectionTitle} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
             {title}
           </h2>
-          <p className="text-base md:text-lg leading-relaxed opacity-90 font-light" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+          <p className={tx.body} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
             {body}
           </p>
         </div>
@@ -67,10 +65,10 @@ function HomeRoomsCarousel() {
       <div className={shellMax}>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
-            <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+            <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
               {locale === "vi" ? "Hạng phòng" : "Room types"}
             </span>
-            <h2 className="text-3xl md:text-4xl" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+            <h2 className={tx.sectionHeading} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
               {locale === "vi" ? "Lựa chọn lưu trú" : "Stay with us"}
             </h2>
           </div>
@@ -117,10 +115,13 @@ function HomeRoomsCarousel() {
                       />
                     </div>
                   </div>
-                  <h3 className="text-xl md:text-2xl mb-1 group-hover:text-[#AF9666] transition-colors" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+                  <h3
+                    className={`${tx.cardTitle} group-hover:text-[#AF9666] transition-colors`}
+                    style={{ fontFamily: "var(--font-heading)", color: colors.green }}
+                  >
                     {room.name[locale]}
                   </h3>
-                  <p className="text-base md:text-lg leading-relaxed opacity-90 font-light line-clamp-2" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                  <p className={`${tx.body} line-clamp-2`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                     {room.shortDesc[locale]}
                   </p>
                 </button>
@@ -141,16 +142,16 @@ function HomeMap() {
   return (
     <section className={`py-16 md:py-20 ${shellGutter}`} style={{ backgroundColor: colors.cream }}>
       <div className={shellMax}>
-        <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+        <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
           {locale === "vi" ? "Vị trí" : "Location"}
         </span>
-        <h2 className="text-3xl md:text-4xl mb-6" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+        <h2 className={tx.sectionHeading} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
           {locale === "vi" ? "Google Maps — NOLIA Hội An" : "Google Maps — NOLIA Hoi An"}
         </h2>
         <div className="aspect-[16/9] w-full border overflow-hidden" style={{ borderColor: "rgba(82,98,72,0.15)" }}>
           <iframe title="Nolia map" src={src} className="w-full h-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </div>
-        <p className="text-sm opacity-75 mt-3" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+        <p className={`${tx.caption} mt-3`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
           {locale === "vi"
             ? "Bản đồ minh họa — thay embed chính thức khi có tọa độ Google Business."
             : "Placeholder embed — replace with your official Google Business coordinates."}
@@ -170,10 +171,10 @@ function HomeServicesCollage() {
       <div className={shellMax}>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
-            <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+            <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
               {locale === "vi" ? "Dịch vụ" : "Services"}
             </span>
-            <h2 className="text-3xl md:text-4xl" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+            <h2 className={tx.sectionHeading} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
               {locale === "vi" ? "Collage trải nghiệm" : "Experience collage"}
             </h2>
           </div>

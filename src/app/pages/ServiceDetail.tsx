@@ -3,6 +3,7 @@ import { MoveLeft } from "lucide-react";
 import { serviceBySlug } from "../data/services";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
+import { tx } from "../typography";
 
 const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB", sand: "#EDEAE0" };
 
@@ -35,13 +36,13 @@ export default function ServiceDetail() {
           {locale === "vi" ? "Quay lại" : "Back"}
         </button>
 
-        <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+        <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
           {s.eyebrow[locale]}
         </span>
-        <h1 className="text-4xl md:text-6xl mb-6" style={{ fontFamily: "var(--font-heading)" }}>
+        <h1 className={tx.pageTitle} style={{ fontFamily: "var(--font-heading)" }}>
           {s.title[locale]}
         </h1>
-        <p className="text-base md:text-lg max-w-3xl leading-relaxed opacity-90 mb-10" style={{ fontFamily: "var(--font-body)" }}>
+        <p className={tx.bodyIntro} style={{ fontFamily: "var(--font-body)" }}>
           {s.intro[locale]}
         </p>
 
@@ -51,10 +52,10 @@ export default function ServiceDetail() {
 
         <div className="grid md:grid-cols-3 gap-10 md:gap-14">
           <div className="md:col-span-2 space-y-6">
-            <h2 className="text-2xl" style={{ fontFamily: "var(--font-heading)" }}>
+            <h2 className={tx.subsectionTitle} style={{ fontFamily: "var(--font-heading)" }}>
               {locale === "vi" ? "Chi tiết" : "Highlights"}
             </h2>
-            <ul className="space-y-3 text-base md:text-lg leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
+            <ul className={`space-y-3 ${tx.body}`} style={{ fontFamily: "var(--font-body)" }}>
               {s.bullets[locale].map((b) => (
                 <li key={b} className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: colors.bronze }} />
@@ -67,7 +68,7 @@ export default function ServiceDetail() {
             <p className="text-xs uppercase tracking-widest mb-3 opacity-70" style={{ fontFamily: "var(--font-body)" }}>
               {locale === "vi" ? "Liên hệ concierge" : "Concierge"}
             </p>
-            <p className="mb-6" style={{ fontFamily: "var(--font-body)" }}>
+            <p className={`${tx.body} mb-6`} style={{ fontFamily: "var(--font-body)" }}>
               {locale === "vi"
                 ? "Để đặt bàn, spa hoặc tour — concierge sẽ xác nhận theo lịch lưu trú của bạn."
                 : "For dining, spa, or tours — concierge confirms around your stay dates."}

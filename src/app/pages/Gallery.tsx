@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
+import { tx } from "../typography";
 
 const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB" };
 
@@ -40,13 +41,13 @@ export default function Gallery() {
     <div className={`pt-20 md:pt-24 pb-24 min-h-screen ${shellGutter}`} style={{ backgroundColor: colors.cream }}>
       <div className={shellMax}>
         <div className="text-center mb-10">
-          <span className="text-xs tracking-[0.28em] uppercase mb-2 block" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+          <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
             {locale === "vi" ? "Thư viện hình ảnh" : "Image library"}
           </span>
-          <h1 className="text-4xl md:text-5xl" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+          <h1 className={tx.pageTitleFlat} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
             Gallery
           </h1>
-          <p className="text-sm md:text-base opacity-80 max-w-2xl mx-auto mt-3" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+          <p className={tx.bodyCenter} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
             {locale === "vi"
               ? "Lọc theo chủ đề — có thể mở rộng thêm tag khi có bộ ảnh chính thức từ khách sạn."
               : "Filter by theme — tags can expand when official photography sets are available."}

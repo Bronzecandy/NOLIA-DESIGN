@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { shellGutter, shellMax } from "../shell";
+import { tx } from "../typography";
 
 const colors = {
   bg: '#F4F2EB',
@@ -69,20 +70,14 @@ export default function Experiences() {
     <main className={`pt-20 md:pt-24 pb-24 min-h-screen ${shellGutter}`}>
       <section className="mb-20">
         <div className={`${shellMax} text-center`}>
-          <span
-            className="text-xs md:text-sm tracking-[0.3em] uppercase mb-4 block"
-            style={{ fontFamily: "var(--font-body)", color: colors.bronze }}
-          >
+          <span className={`${tx.eyebrowAccent} mb-4`} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
             Nghệ thuật thư giãn
           </span>
-          <h1 className="text-4xl md:text-6xl mb-6" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+          <h1 className={tx.pageTitleFlat} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
             Trải Nghiệm Tại Nolia
           </h1>
-          <div className="w-20 h-px mx-auto mb-8" style={{ backgroundColor: colors.bronze }}></div>
-          <p
-            className="text-lg opacity-80 max-w-3xl mx-auto leading-relaxed"
-            style={{ fontFamily: "var(--font-body)", color: colors.green }}
-          >
+          <div className="w-20 h-px mx-auto mb-8 mt-4" style={{ backgroundColor: colors.bronze }}></div>
+          <p className={`${tx.body} max-w-3xl mx-auto`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
             Đắm mình trong tinh hoa Hội An qua những trải nghiệm được chăm chút tỉ mỉ, tôn vinh truyền thống và hòa quyện cùng nghệ thuật sống hiện đại.
           </p>
         </div>
@@ -110,19 +105,13 @@ export default function Experiences() {
                 </div>
 
                 <div className="w-full lg:w-1/2">
-                  <span
-                    className="text-xs tracking-[0.3em] uppercase block mb-4"
-                    style={{ fontFamily: "var(--font-body)", color: colors.bronze }}
-                  >
+                  <span className={`${tx.eyebrowAccent} mb-4`} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
                     {exp.subtitle}
                   </span>
-                  <h2 className="text-3xl md:text-5xl mb-6" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+                  <h2 className={tx.sectionTitle} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
                     {exp.title}
                   </h2>
-                  <p
-                    className="text-base leading-relaxed opacity-80 mb-8"
-                    style={{ fontFamily: "var(--font-body)", color: colors.green }}
-                  >
+                  <p className={`${tx.body} mb-8`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                     {exp.description}
                   </p>
 
@@ -137,7 +126,7 @@ export default function Experiences() {
                       {exp.details.map((detail, i) => (
                         <li
                           key={i}
-                          className="flex items-start gap-3 text-sm opacity-80 hover:opacity-100 hover:translate-x-1 transition-all duration-300"
+                          className={`flex items-start gap-3 ${tx.caption} opacity-90 hover:opacity-100 hover:translate-x-1 transition-all duration-300`}
                           style={{ fontFamily: "var(--font-body)", color: colors.green }}
                         >
                           <span style={{ color: colors.bronze }}>•</span>
@@ -163,13 +152,10 @@ export default function Experiences() {
 
       <section className={`mt-32 py-24 ${shellGutter}`} style={{ backgroundColor: colors.green }}>
         <div className="max-w-4xl mx-auto w-full text-center">
-          <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: "var(--font-heading)", color: colors.bg }}>
+          <h2 className={`${tx.pageTitleFlat} mb-6`} style={{ fontFamily: "var(--font-heading)", color: colors.bg }}>
             Thiết Kế Lịch Trình Riêng
           </h2>
-          <p
-            className="text-lg mb-10 leading-relaxed opacity-80"
-            style={{ fontFamily: "var(--font-body)", color: colors.bg }}
-          >
+          <p className={`${tx.body} mb-10 max-w-3xl mx-auto`} style={{ fontFamily: "var(--font-body)", color: colors.bg }}>
             Đội ngũ Concierge của chúng tôi sẵn sàng giúp bạn tạo nên một trải nghiệm cá nhân hóa hoàn hảo, phù hợp với sở thích và lịch trình của bạn.
           </p>
           <a

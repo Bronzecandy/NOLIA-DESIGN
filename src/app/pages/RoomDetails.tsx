@@ -4,6 +4,7 @@ import { RoomPriceOffer } from "../components/RoomPriceOffer";
 import { roomById } from "../data/rooms";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
+import { tx } from "../typography";
 
 const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB", sand: "#EDEAE0" };
 
@@ -36,10 +37,10 @@ export default function RoomDetails() {
 
         <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+            <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
               NOLIA · {locale === "vi" ? "Hạng phòng" : "Room type"}
             </span>
-            <h1 className="text-4xl md:text-6xl" style={{ fontFamily: "var(--font-heading)" }}>
+            <h1 className={tx.pageTitleFlat} style={{ fontFamily: "var(--font-heading)" }}>
               {room.name[locale]}
             </h1>
           </div>
@@ -63,20 +64,23 @@ export default function RoomDetails() {
 
         <div className="flex flex-col md:flex-row gap-12 md:gap-16">
           <div className="w-full md:w-2/3">
-            <h2 className="text-2xl mb-4" style={{ fontFamily: "var(--font-heading)" }}>
+            <h2 className={`${tx.subsectionTitle} mb-4`} style={{ fontFamily: "var(--font-heading)" }}>
               {locale === "vi" ? "Về không gian này" : "About this space"}
             </h2>
-            <p className="text-base md:text-lg leading-relaxed opacity-90 font-light whitespace-pre-line" style={{ fontFamily: "var(--font-body)" }}>
+            <p className={`${tx.body} whitespace-pre-line`} style={{ fontFamily: "var(--font-body)" }}>
               {room.fullDesc[locale]}
             </p>
           </div>
 
           <div className="w-full md:w-1/3">
             <div className="p-6 md:p-8 border hover:shadow-lg transition-shadow duration-500" style={{ borderColor: "rgba(175, 150, 102, 0.3)", backgroundColor: colors.sand }}>
-              <h3 className="text-xl mb-6 border-b pb-4" style={{ fontFamily: "var(--font-heading)", borderColor: "rgba(82, 98, 72, 0.2)" }}>
+              <h3
+                className={`${tx.subsectionTitle} mb-6 border-b pb-4`}
+                style={{ fontFamily: "var(--font-heading)", borderColor: "rgba(82, 98, 72, 0.2)" }}
+              >
                 {locale === "vi" ? "Thông tin phòng" : "Room details"}
               </h3>
-              <ul className="space-y-3 text-base mb-8" style={{ fontFamily: "var(--font-body)" }}>
+              <ul className={`space-y-3 ${tx.body} mb-8`} style={{ fontFamily: "var(--font-body)" }}>
                 <li className="flex justify-between gap-4">
                   <span className="opacity-70">{locale === "vi" ? "Diện tích" : "Size"}</span>
                   <span className="font-medium">{room.size}</span>

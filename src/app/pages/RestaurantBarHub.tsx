@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { restaurantChildren } from "../data/services";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
+import { tx } from "../typography";
 
 const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB" };
 
@@ -12,13 +13,13 @@ export default function RestaurantBarHub() {
   return (
     <div className={`pt-20 md:pt-24 pb-20 min-h-screen ${shellGutter}`} style={{ backgroundColor: colors.cream }}>
       <div className={shellMax}>
-        <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+        <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
           {locale === "vi" ? "Ẩm thực" : "Dining"}
         </span>
-        <h1 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+        <h1 className={tx.pageTitle} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
           Restaurant & Bar
         </h1>
-        <p className="text-base md:text-lg opacity-85 max-w-3xl mb-10" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+        <p className={`${tx.bodyTight} mb-10`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
           {locale === "vi"
             ? "Ba điểm nhấn ven nước và trên cao — chọn không gian phù hợp nhịp của bạn."
             : "Three venues by the water and above it — choose the mood that fits your evening."}
@@ -36,10 +37,10 @@ export default function RestaurantBarHub() {
                 <img src={s.image} alt="" className="w-full h-full object-cover grayscale-[12%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
               </div>
               <div className="p-4">
-                <h2 className="text-2xl group-hover:text-[#AF9666] transition-colors" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+                <h2 className={`${tx.cardTitle} group-hover:text-[#AF9666] transition-colors`} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
                   {s.title[locale]}
                 </h2>
-                <p className="text-sm md:text-base opacity-80 mt-2 line-clamp-3" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                <p className={`${tx.body} mt-2 line-clamp-3`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                   {s.intro[locale]}
                 </p>
               </div>

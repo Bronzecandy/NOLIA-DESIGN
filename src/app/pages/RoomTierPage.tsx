@@ -4,6 +4,7 @@ import { RoomPriceOffer } from "../components/RoomPriceOffer";
 import { isTierSlug, roomsInTier, tierMeta } from "../data/rooms";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
+import { tx } from "../typography";
 
 const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB", sand: "#EDEAE0" };
 
@@ -37,16 +38,16 @@ export default function RoomTierPage() {
             <img src={meta.cover} alt="" className="w-full aspect-[4/3] object-cover grayscale-[10%]" />
           </div>
           <div>
-            <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+            <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
               {locale === "vi" ? "Hạng phòng" : "Category"}
             </span>
-            <h1 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: "var(--font-heading)" }}>
+            <h1 className={tx.pageTitle} style={{ fontFamily: "var(--font-heading)" }}>
               {meta.title[locale]}
             </h1>
-            <p className="text-base md:text-lg opacity-90 leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
+            <p className={tx.body} style={{ fontFamily: "var(--font-body)" }}>
               {meta.blurb[locale]}
             </p>
-            <p className="text-sm opacity-75 mt-6" style={{ fontFamily: "var(--font-body)" }}>
+            <p className={`${tx.caption} mt-6`} style={{ fontFamily: "var(--font-body)" }}>
               {locale === "vi"
                 ? "Chọn một loại phòng bên dưới để xem diện tích, giường, view và đặt phòng."
                 : "Choose a room type below to see size, bed, view, and to book."}
@@ -54,7 +55,10 @@ export default function RoomTierPage() {
           </div>
         </div>
 
-        <h2 className="text-2xl md:text-3xl mb-8 pb-2 border-b" style={{ fontFamily: "var(--font-heading)", borderColor: "rgba(82,98,72,0.12)" }}>
+        <h2
+          className={`${tx.subsectionTitle} mb-8 pb-2 border-b`}
+          style={{ fontFamily: "var(--font-heading)", borderColor: "rgba(82,98,72,0.12)" }}
+        >
           {locale === "vi" ? "Các loại phòng" : "Room types"}
         </h2>
 
@@ -87,10 +91,13 @@ export default function RoomTierPage() {
                 </div>
               </div>
               <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-xl md:text-2xl mb-2 group-hover:text-[#AF9666] transition-colors" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+                <h3
+                  className={`${tx.cardTitle} mb-2 group-hover:text-[#AF9666] transition-colors`}
+                  style={{ fontFamily: "var(--font-heading)", color: colors.green }}
+                >
                   {room.name[locale]}
                 </h3>
-                <p className="text-base md:text-lg leading-relaxed opacity-90 font-light flex-1" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                <p className={`${tx.body} flex-1`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                   {room.shortDesc[locale]}
                 </p>
                 <span className="text-xs tracking-widest uppercase mt-4" style={{ fontFamily: "var(--font-body)", color: colors.bronze }}>

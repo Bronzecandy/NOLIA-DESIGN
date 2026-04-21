@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react";
 import { TIER_ORDER, tierMeta, type TierId } from "../data/rooms";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
+import { tx } from "../typography";
 
 const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB", sand: "#EDEAE0" };
 
@@ -13,13 +14,13 @@ export default function Rooms() {
   return (
     <div className={`pt-20 md:pt-24 pb-24 min-h-screen ${shellGutter}`} style={{ backgroundColor: colors.cream }}>
       <div className={shellMax}>
-        <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+        <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
           {locale === "vi" ? "Hạng phòng" : "Room categories"}
         </span>
-        <h1 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+        <h1 className={tx.pageTitle} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
           {locale === "vi" ? "Không gian lưu trú" : "Accommodation"}
         </h1>
-        <p className="text-base md:text-lg opacity-85 max-w-3xl mb-12 md:mb-16" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+        <p className={`${tx.bodyTight} mb-12 md:mb-16`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
           {locale === "vi"
             ? "Chọn một hạng phòng để xem các loại phòng thuộc hạng đó. Từ trang loại phòng, bạn mở trang chi tiết từng căn."
             : "Pick a category to see its room types. From there, open each room’s detail page."}

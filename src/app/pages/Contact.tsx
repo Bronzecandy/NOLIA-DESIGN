@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter, shellMax } from "../shell";
+import { tx } from "../typography";
 
 const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB", sand: "#EDEAE0" };
 
@@ -38,13 +39,13 @@ export default function Contact() {
     <div className={`pt-20 md:pt-24 pb-20 min-h-screen ${shellGutter}`} style={{ backgroundColor: colors.cream }}>
       <div className={`${shellMax} grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start`}>
         <div>
-          <span className="text-xs tracking-[0.28em] uppercase block mb-2" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+          <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
             {c.kicker}
           </span>
-          <h1 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+          <h1 className={tx.pageTitle} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
             {c.title}
           </h1>
-          <p className="text-base md:text-lg opacity-85 mb-10" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+          <p className={`${tx.body} mb-10`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
             {c.sub}
           </p>
 

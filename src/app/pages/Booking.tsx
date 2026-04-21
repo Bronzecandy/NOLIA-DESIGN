@@ -4,6 +4,7 @@ import type { Room } from "../data/rooms";
 import { formatVnd, listPriceBeforeDiscount, roomsData } from "../data/rooms";
 import { useLanguage } from "../context/LanguageContext";
 import { shellGutter } from "../shell";
+import { tx } from "../typography";
 
 const colors = { green: "#526248", bronze: "#AF9666", cream: "#F4F2EB", sand: "#EDEAE0" };
 
@@ -110,13 +111,13 @@ export default function Booking() {
     <div className={`pt-20 md:pt-24 pb-24 min-h-screen ${shellGutter}`} style={{ backgroundColor: colors.cream }}>
       <div className="mx-auto w-full max-w-6xl">
         <div className="text-center mb-10">
-          <span className="text-xs tracking-[0.28em] uppercase mb-2 block" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
+          <span className={tx.eyebrowAccent} style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
             {c.kicker}
           </span>
-          <h1 className="text-4xl md:text-5xl" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+          <h1 className={tx.pageTitleFlat} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
             {c.title}
           </h1>
-          <p className="text-sm md:text-base mt-3 opacity-80" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+          <p className={tx.bodyCenter} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
             {c.sub}
           </p>
         </div>
@@ -127,20 +128,20 @@ export default function Booking() {
               <span className="text-[11px] tracking-[0.24em] uppercase opacity-80" style={{ fontFamily: "var(--font-accent)", color: colors.bronze }}>
                 {c.availKicker}
               </span>
-              <h2 className="text-2xl md:text-3xl mt-2" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+              <h2 className={`${tx.subsectionTitle} mt-2`} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
                 {c.availTitle}
               </h2>
-              <p className="text-sm opacity-75 mt-2 max-w-xl mx-auto" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+              <p className={`${tx.body} mt-2 max-w-xl mx-auto text-center`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                 {c.availSub}
               </p>
             </div>
 
             {availableRooms.length === 0 ? (
               <div className="border p-8 text-center mb-6" style={{ borderColor: "rgba(82,98,72,0.15)", backgroundColor: colors.sand }}>
-                <p className="text-lg mb-2" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+                <p className={`${tx.subsectionTitle} mb-2`} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
                   {c.noneTitle}
                 </p>
-                <p className="text-sm opacity-80" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                <p className={tx.body} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                   {c.noneBody}
                 </p>
               </div>
@@ -159,7 +160,7 @@ export default function Booking() {
                       </div>
                       <div className="p-5 flex flex-col flex-1">
                         <div className="flex items-start justify-between gap-2 mb-2">
-                          <h3 className="text-lg leading-snug" style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
+                          <h3 className={tx.cardTitle} style={{ fontFamily: "var(--font-heading)", color: colors.green }}>
                             {room.name[locale]}
                           </h3>
                           <span
@@ -169,7 +170,7 @@ export default function Booking() {
                             {locale === "vi" ? `Còn ${units} ${c.availRoomsWord}` : `${units} ${c.availRoomsWord}`}
                           </span>
                         </div>
-                        <p className="text-base md:text-lg leading-relaxed opacity-90 font-light line-clamp-2 mb-4 flex-1" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
+                        <p className={`${tx.body} line-clamp-2 mb-4 flex-1`} style={{ fontFamily: "var(--font-body)", color: colors.green }}>
                           {room.shortDesc[locale]}
                         </p>
                         <div className="text-sm mb-4 w-max max-w-full" style={{ fontFamily: "var(--font-body)", color: colors.green }}>
