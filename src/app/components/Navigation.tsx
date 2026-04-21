@@ -148,7 +148,7 @@ export function Navigation() {
 
             <button
               type="button"
-              className="flex flex-col items-center justify-center gap-1 shrink-0 justify-self-center py-0.5"
+              className="flex flex-col items-center justify-center shrink-0 justify-self-center"
               onClick={() => go("/")}
             >
               <img src={logoMark} alt="" className="h-11 w-auto max-h-11 object-contain md:h-12 md:max-h-12" />
